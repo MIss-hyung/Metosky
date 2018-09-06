@@ -55,7 +55,12 @@ public class TeachersController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public void insertTeacherPOST(TeachersVO teacher, Model model) throws Exception{
 		System.out.println("/teacher/register POST 방식입니다.");
-				
+		
+		// 새로고침 혹은 뒤로 가기 할 때 데이터가 중복으로 들어가는 것 예방
+		int cnt = service.emailExistChk(teacher.getT_email());
+		if(cnt != 0) return;
+		//////////////////////////////////////
+		
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String ct = sdf.format(date);

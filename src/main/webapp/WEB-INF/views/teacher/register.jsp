@@ -127,7 +127,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="index2.html"><b>Meto</b>SKY</a>
+    <b>Meto</b>SKY
   </div>
 
   <div class="register-box-body">
@@ -158,7 +158,7 @@
       </div>
     </form>
 
-    <a href="login.html" class="text-center">이미 가입 하였습니다.</a>
+    <a href="/metosky/" class="text-center">이미 가입 하였습니다.</a>
   </div>
   <!-- /.form-box -->
 </div>
