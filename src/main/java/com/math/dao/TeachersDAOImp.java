@@ -21,5 +21,12 @@ public class TeachersDAOImp implements TeachersDAO {
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".insertTeacher", vo);
 	}
+
+	@Override
+	public int emailExistChk(String t_email) throws Exception {
+		// TODO Auto-generated method stub
+		int count = sqlSession.selectOne(namespace+".emailExistChk", t_email);
+		return count;
+	}
 	
 }

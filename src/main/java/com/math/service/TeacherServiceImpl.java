@@ -18,5 +18,10 @@ public class TeacherServiceImpl implements TeacherService {
 		dao.insertTeacher(vo);
 	}
 
+	@Override
+	public int emailExistChk(String t_email) throws Exception {
+		return dao.emailExistChk(t_email);
+	}
+
 	
 }

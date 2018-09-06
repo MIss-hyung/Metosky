@@ -11,5 +11,11 @@
 		insert into teachers(t_name,t_email,t_pswd,created) values
 		(#{t_name},#{t_email},#{t_pswd},#{created})
 	</insert>
+	
+	<select id="emailExistChk" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM teachers
+		WHERE 
+			t_email = #{t_email}
+	</select>
 
 </mapper>
