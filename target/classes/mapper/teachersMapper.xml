@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.math.dao.TeachersDAO">
+
+	<insert id="insertTeacher">
+		INSERT INTO TEACHERS(t_name,t_email,t_pswd,created) VALUES
+		(#{t_name},#{t_email},#{t_pswd},#{created})
+	</insert>
+	
+	<select id="emailExistChk" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM teachers
+		WHERE 
+			t_email = #{t_email}
+	</select>
+	
+	<select id="login" resultType = "TeachersVO">
+		SELECT * FROM teachers WHERE t_email = #{t_email} AND t_pswd = #{t_pswd}
+	</select>
+
+</mapper>
