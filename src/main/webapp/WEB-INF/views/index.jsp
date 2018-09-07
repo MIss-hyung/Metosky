@@ -38,7 +38,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">로그인을 해 주세요.</p>
 
-    <form action="pages/dashboard/dashboard.jsp" method="post">
+    <form action="teacher/login" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="이메일">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

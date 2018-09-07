@@ -28,5 +28,11 @@ public class TeachersDAOImp implements TeachersDAO {
 		int count = sqlSession.selectOne(namespace+".emailExistChk", t_email);
 		return count;
 	}
+
+	@Override
+	public TeachersVO login(TeachersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".login", vo);
+	}
 	
 }

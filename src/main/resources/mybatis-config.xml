@@ -3,5 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
+	<typeAliases>
+		<typeAlias alias="TeachersVO" type="com.math.domain.TeachersVO"></typeAlias>
+	</typeAliases>
 </configuration>

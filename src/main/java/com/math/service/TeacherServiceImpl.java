@@ -23,5 +23,11 @@ public class TeacherServiceImpl implements TeacherService {
 		return dao.emailExistChk(t_email);
 	}
 
+	@Override
+	public TeachersVO login(TeachersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.login(vo);
+	}
+
 	
 }
