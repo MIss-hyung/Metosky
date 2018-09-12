@@ -20,7 +20,7 @@
 		<div class="row">
         	<div class="col-xs-12">
   				<div class="box">
-  					<a href="../students/studentsList.jsp">
+  					<a href="students/studentsList.jsp">
 	  					<div class="box-header">
 	  						<h3 class="box-title">학생 목록</h3>
 	  					</div>
@@ -426,8 +426,8 @@
   		
   		
 <!-- DataTables -->
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
     $('#example2').DataTable()

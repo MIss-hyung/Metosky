@@ -8,20 +8,20 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/dist/css/AdminLTE.min.css">
     <!-- DataTables -->
-  	<link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/dist/css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,27 +30,27 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<!-- AdminLTE for demo purposes -->
-	<script src="../../dist/js/demo.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/demo.js"></script>
  
 	<!-- jQuery 3 -->
-	<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- FastClick -->
-	<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/fastclick/lib/fastclick.js"></script>
 	<!-- AdminLTE App -->
-	<script src="../../dist/js/adminlte.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/adminlte.min.js"></script>
 	<!-- Sparkline -->
-	<script src="../../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 	<!-- jvectormap  -->
-	<script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 	<!-- SlimScroll -->
-	<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<!-- ChartJS -->
-	<script src="../../bower_components/chart.js/Chart.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/chart.js/Chart.js"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="../../dist/js/pages/dashboard2.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/pages/dashboard2.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -77,7 +77,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../favicon_white.ico" class="user-image" alt="User Image">
+              <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">
               <span class="">OOO 선생님</span>
             </a>
           </li>
@@ -97,7 +97,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../favicon_white.ico" class="img-circle" alt="User Image">
+          <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>OOO 선생님</p>

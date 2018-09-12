@@ -33,7 +33,7 @@ public class LoginController {
 		
 		if(teacher != null) {
 			session.setAttribute("login",teacher);
-			returnURL = "redirect:/dashboard";
+			returnURL = "teacher/dashboard";
 		}else {
 			returnURL = "redirect:/";
 		}
