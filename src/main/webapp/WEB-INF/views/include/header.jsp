@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">
-              <span class="">OOO 선생님</span>
+              <span class="">${sessionScope.login.t_name} 선생님</span>
             </a>
           </li>
           <!-- Control Sidebar Toggle Button -->
@@ -100,7 +101,7 @@
           <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>OOO 선생님</p>
+          <p>${sessionScope.login.t_name} 선생님</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

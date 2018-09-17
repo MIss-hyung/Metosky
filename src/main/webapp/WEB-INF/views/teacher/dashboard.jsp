@@ -5,7 +5,7 @@
   <!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			대시보드 <small>Version 0.1</small> ${result}!!!!!
+			대시보드 <small>Version 0.1</small>
       	</h1>
       	<ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> 한 눈에 보기</a></li>

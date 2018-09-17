@@ -20,7 +20,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		Object obj = session.getAttribute("login");
 		
 		if(obj == null) {//로그인이 안되어 있는 상태 -> 로그인 폼으로 돌려보냄
-			response.sendRedirect("/");
+			response.sendRedirect("/metosky/");
 			return false;
 		}
 		

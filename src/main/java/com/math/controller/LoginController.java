@@ -19,20 +19,23 @@ public class LoginController {
 	
 	@Inject
 	private TeacherService service;
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String loginGet(TeachersVO teacher) throws Exception{
+		return "/";
+	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String loginPost(TeachersVO teacher, Model model, HttpSession session) throws Exception{
+	public String loginPost(TeachersVO teacher, HttpSession session) throws Exception{
 		System.out.println("/login POST 방식 입니다.");
-		
 		String returnURL = "";
 		if(session.getAttribute("login") != null) {
 			session.removeAttribute("login");
 		}
 		
-		service.login(teacher);
+		TeachersVO vo = service.login(teacher);
 		
-		if(teacher != null) {
-			session.setAttribute("login",teacher);
+		if(vo != null) {
+			session.setAttribute("login",vo);
 			returnURL = "redirect:/teacher/dashboard";
 		}else {
 			returnURL = "redirect:/";
