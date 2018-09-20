@@ -5,6 +5,5 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="TeachersVO" type="com.math.domain.TeachersVO"></typeAlias>
-		<typeAlias alias="MenuManagerVO" type="com.math.domain.MenuManagerVO"></typeAlias>
 	</typeAliases>
 </configuration>

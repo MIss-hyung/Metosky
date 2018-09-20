@@ -1,5 +1,8 @@
 package com.math.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +30,12 @@ public class TeacherServiceImpl implements TeacherService {
 	public TeachersVO login(TeachersVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.login(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> teachersList(int t_status) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.teachersList(t_status);
 	}
 
 	

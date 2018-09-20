@@ -3,6 +3,7 @@ package com.math.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.math.domain.TeachersVO;
 import com.math.service.TeacherService;
@@ -68,7 +70,17 @@ public class TeachersController {
 		
 		System.out.println(teacher.toString());
 		service.insertTeacher(teacher);
-//		model.addAttribute("result", "성공");
-		
 	}
+	
+//	@RequestMapping("/waitList")
+//	public ModelAndView list() throws Exception {
+//		System.out.println("/teacher/waitList called");
+//		List<TeachersVO> list = service.teachersList(0);
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("admin/9010");
+//		mav.addObject("list", list);
+//		return mav;
+//	}
+//	
+//	
 }

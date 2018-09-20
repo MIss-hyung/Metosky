@@ -36,7 +36,13 @@ public class LoginController {
 		
 		if(vo != null) {
 			session.setAttribute("login",vo);
-			returnURL = "redirect:/teacher/dashboard";
+			
+			if(vo.getIs_admin() == 1) {// admin이면 
+				returnURL = "redirect:/admin/9010";
+			}else {
+				returnURL = "redirect:/teacher/2010";
+			}
+			
 		}else {
 			returnURL = "redirect:/";
 		}

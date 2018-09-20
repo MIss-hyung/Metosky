@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/teacher")
 public class MainController {
 	
-	@RequestMapping(value="/dashboard", method=RequestMethod.GET)
+	@RequestMapping(value="/2010", method=RequestMethod.GET)
 	public String showDashboard( Model model, HttpSession session) throws Exception{
-		System.out.println("/teacher/dashbaord GET 방식입니다.");
-		return "teacher/dashboard";
+		System.out.println("/students/studentsList GET 방식입니다.");
+		return "students/studentsList";
 	}
 }

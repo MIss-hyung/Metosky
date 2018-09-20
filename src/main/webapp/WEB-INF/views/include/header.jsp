@@ -120,7 +120,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-        <li class="active treeview menu-open">
+<!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
             <span class="pull-right-container">
@@ -130,8 +130,21 @@
           <ul class="treeview-menu">
             <li class="active"><a href="../dashboard/dashboard.jsp"><i class="fa fa-circle-o"></i> 대시보드</a></li>
           </ul>
-        </li>
-        <li class="active treeview menu-open">
+        </li> -->
+        <c:if test="${sessionScope.login.is_admin == 1 }">
+	        <li class="treeview">
+	          <a href="#">
+	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>강사 가입 승인</a></li>
+	          </ul>
+	        </li>
+        </c:if>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>학생 관리</span>
             <span class="pull-right-container">
@@ -139,10 +152,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="../students/studentsList.jsp"><i class="fa fa-circle-o"></i>학생 목록</a></li>
+            <li class=""><a href="../teacher/2010"><i class="fa fa-circle-o"></i>학생 목록</a></li>
           </ul>
         </li>
-        <li class="active treeview menu-open">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-book"></i> <span>문제 출력</span>
             <span class="pull-right-container">
@@ -150,8 +163,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="../problems/printMathsTest.jsp"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
-            <li class="active"><a href="../problems/printStudentGotWrong.jsp"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
+            <li class=""><a href="problems/printMathsTest.jsp"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
+            <li class=""><a href="problems/printStudentGotWrong.jsp"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
           </ul>
         </li>
       </ul>
