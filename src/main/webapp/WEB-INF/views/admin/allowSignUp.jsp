@@ -41,7 +41,8 @@
 				  					<th>연락처</th>
 				  					<th>이메일</th>
 				  					<th>가입일</th>
-				  					<th>승인</th>
+				  					<th></th>
+				  					<th></th>
 				  				</tr>
 				  			</thead>
 				  			<tbody>
@@ -52,7 +53,8 @@
 				  					<td>${row.t_phone}</td>
 				  					<td>${row.t_email}</td>
 				  					<td>${row.created_ko}</td>
-				  					<td></td>
+				  					<td><button class="btn btn-success">승인</button></td>
+				  					<td><button class="btn btn-danger">거절</button></td>
 				  				</tr>
 				  			  </c:forEach>
 				  			</tbody>
