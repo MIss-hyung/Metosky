@@ -72,15 +72,4 @@ public class TeachersController {
 		service.insertTeacher(teacher);
 	}
 	
-//	@RequestMapping("/waitList")
-//	public ModelAndView list() throws Exception {
-//		System.out.println("/teacher/waitList called");
-//		List<TeachersVO> list = service.teachersList(0);
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("admin/9010");
-//		mav.addObject("list", list);
-//		return mav;
-//	}
-//	
-//	
 }

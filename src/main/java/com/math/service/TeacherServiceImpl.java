@@ -38,5 +38,11 @@ public class TeacherServiceImpl implements TeacherService {
 		return dao.teachersList(t_status);
 	}
 
+	@Override
+	public void approveTeacher(TeachersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.approveTeacher(vo);
+	}
+
 	
 }

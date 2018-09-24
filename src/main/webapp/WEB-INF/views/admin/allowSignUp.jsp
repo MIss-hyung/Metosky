@@ -19,6 +19,34 @@
 			$('.sidebar-menu').children('.treeview').eq(0).addClass('active');
 			$('.sidebar-menu').children('.treeview').eq(0).children('ul').children('li').eq(0).addClass('active');
 		});
+		
+		function approve(obj) {
+			var t_id = obj.id;
+			var t_status = obj.value;
+			var row_id = "#row_" + t_id;
+			
+			var request = {	t_id : t_id, t_status : t_status};
+			
+		   	$.ajax({
+		  		async: false,
+		  		type : 'POST',
+		  		data : JSON.stringify(request),
+		  		url	 : "signUpApprove",
+		  		dataType: "json",
+		  		contentType: "application/json; charset=UTF-8",
+		  		success : function(data) {
+		  			$(row_id).remove();
+		  		},
+		  		error : function(error) {
+		  			alert("error: " + error);
+		  			return false;
+		  		}
+		  	});
+		}
+		
+		function reject() {
+			
+		}
 		</script>	
 		<!-- Main content -->
 		<section class="content">
@@ -47,14 +75,14 @@
 				  			</thead>
 				  			<tbody>
 				  			  <c:forEach var="row" items="${list}">
-				  			  	<tr>
+				  			  	<tr id="row_${row.t_id}">
 				  					<td>${row.t_id}</td>
 				  					<td>${row.t_name}</td>
 				  					<td>${row.t_phone}</td>
 				  					<td>${row.t_email}</td>
 				  					<td>${row.created_ko}</td>
-				  					<td><button class="btn btn-success">승인</button></td>
-				  					<td><button class="btn btn-danger">거절</button></td>
+				  					<td><button class="btn btn-success" id="${row.t_id}" value="1" onclick="approve(this)">승인</button></td>
+				  					<td><button class="btn btn-danger" id="${row.t_id}" value="-1" onclick="approve(this)">거절</button></td>
 				  				</tr>
 				  			  </c:forEach>
 				  			</tbody>

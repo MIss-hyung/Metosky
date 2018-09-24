@@ -31,7 +31,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<!-- AdminLTE for demo purposes -->
-	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/demo.js"></script>
+	<!--<script src="${pageContext.request.contextPath}/resources/theme/dist/js/demo.js"></script>  -->
  
 	<!-- jQuery 3 -->
 	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery/dist/jquery.min.js"></script>
@@ -51,7 +51,7 @@
 	<!-- ChartJS -->
 	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/chart.js/Chart.js"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/pages/dashboard2.js"></script>
+	<!-- <script src="${pageContext.request.contextPath}/resources/theme/dist/js/pages/dashboard2.js"></script> -->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -78,7 +78,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">
+             <!--<img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">  --> 
               <span class="">${sessionScope.login.t_name} 선생님</span>
             </a>
           </li>
@@ -98,11 +98,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image">
+          <!-- <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image"> -->
         </div>
         <div class="pull-left info">
           <p>${sessionScope.login.t_name} 선생님</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -163,8 +162,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="problems/printMathsTest.jsp"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
-            <li class=""><a href="problems/printStudentGotWrong.jsp"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
+            <li class=""><a href="../problems/3010"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
+            <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
           </ul>
         </li>
       </ul>
