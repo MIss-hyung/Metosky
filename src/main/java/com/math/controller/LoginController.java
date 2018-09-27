@@ -9,16 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.math.domain.TeachersVO;
 import com.math.service.TeacherService;
 
-@Controller
+@Controller 
 @RequestMapping("/teacher")
 public class LoginController {
 	
 	@Inject
 	private TeacherService service;
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginGet(TeachersVO teacher) throws Exception{
 		return "/";
@@ -27,7 +29,10 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String loginPost(TeachersVO teacher, HttpSession session) throws Exception{
 		System.out.println("/login POST 방식 입니다.");
+		ModelAndView mav=new ModelAndView();
 		String returnURL = "";
+		//String msg= "로그인에 실패했습니다.";
+		
 		if(session.getAttribute("login") != null) {
 			session.removeAttribute("login");
 		}
@@ -37,7 +42,9 @@ public class LoginController {
 		if(vo != null) {
 			session.setAttribute("login",vo);
 			returnURL = "redirect:/teacher/dashboard";
+			
 		}else {
+		mav.addObject("msg","failure");
 			returnURL = "redirect:/";
 		}
 		
@@ -52,8 +59,10 @@ public class LoginController {
 			TeachersVO vo = (TeachersVO) obj;
 			session.removeAttribute("login");
 			session.invalidate();
+			//req.getparameter
 		}
 		
 		return "redirect:/";
 	}
+	
 }

@@ -37,7 +37,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">로그인을 해 주세요.</p>
-
+    
     <form action="teacher/login" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="이메일" name="t_email">
@@ -47,6 +47,7 @@
         <input type="password" class="form-control" placeholder="비밀번호" name="t_pswd">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+  
       <div class="row" style="margin-bottom: 15px;">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -55,10 +56,12 @@
             </label>
           </div>
         </div>
+    
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
         </div>
+      
         <!-- /.col -->
       </div>
     </form>
@@ -69,7 +72,11 @@
 
     <a href="#">비밀번호 찾기</a><br>
     <a href="teacher/register" class="text-center">회원 가입 하기</a>
-
+	 <c:if test="${msg=='failure'}">
+        	<div style="color:red">
+        	   아이디 또는 비밀번호가 일치하지 않습니다.
+        	</div>
+     </c:if>
   </div>
   <!-- /.login-box-body -->
 </div>
@@ -82,6 +89,7 @@
 <!-- iCheck -->
 <script src="${pageContext.request.contextPath}/resources/theme/plugins/iCheck/icheck.min.js"></script>
 <script>
+	
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
