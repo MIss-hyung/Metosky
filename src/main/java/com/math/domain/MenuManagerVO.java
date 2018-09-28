@@ -1,6 +1,7 @@
 package com.math.domain;
 
 public class MenuManagerVO {
+	private int m_id;
 	private int m_code;
 	private int m_depth;
 	private String m_name;
@@ -10,7 +11,12 @@ public class MenuManagerVO {
 	private int is_auth;
 	private String lnb_icon;
 	
-	
+	public int getM_id() {
+		return m_id;
+	}
+	public void setM_id(int m_id) {
+		this.m_id = m_id;
+	}
 	public int getM_code() {
 		return m_code;
 	}
@@ -59,5 +65,6 @@ public class MenuManagerVO {
 	public void setLnb_icon(String lnb_icon) {
 		this.lnb_icon = lnb_icon;
 	}
+	
 	
 }

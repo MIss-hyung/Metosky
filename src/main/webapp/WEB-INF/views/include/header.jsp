@@ -31,7 +31,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<!-- AdminLTE for demo purposes -->
-	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/demo.js"></script>
+	<!--<script src="${pageContext.request.contextPath}/resources/theme/dist/js/demo.js"></script>  -->
  
 	<!-- jQuery 3 -->
 	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/jquery/dist/jquery.min.js"></script>
@@ -51,7 +51,7 @@
 	<!-- ChartJS -->
 	<script src="${pageContext.request.contextPath}/resources/theme/bower_components/chart.js/Chart.js"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="${pageContext.request.contextPath}/resources/theme/dist/js/pages/dashboard2.js"></script>
+	<!-- <script src="${pageContext.request.contextPath}/resources/theme/dist/js/pages/dashboard2.js"></script> -->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -78,7 +78,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">
+             <!--<img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">  --> 
               <span class="">${sessionScope.login.t_name} 선생님</span>
             </a>
           </li>
@@ -98,11 +98,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image">
+          <!-- <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image"> -->
         </div>
         <div class="pull-left info">
           <p>${sessionScope.login.t_name} 선생님</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -120,7 +119,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-        <li class="active treeview menu-open">
+<!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
             <span class="pull-right-container">
@@ -130,8 +129,21 @@
           <ul class="treeview-menu">
             <li class="active"><a href="../dashboard/dashboard.jsp"><i class="fa fa-circle-o"></i> 대시보드</a></li>
           </ul>
-        </li>
-        <li class="active treeview menu-open">
+        </li> -->
+        <c:if test="${sessionScope.login.is_admin == 1 }">
+	        <li class="treeview">
+	          <a href="#">
+	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>강사 가입 승인</a></li>
+	          </ul>
+	        </li>
+        </c:if>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>학생 관리</span>
             <span class="pull-right-container">
@@ -139,10 +151,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="../students/studentsList.jsp"><i class="fa fa-circle-o"></i>학생 목록</a></li>
+            <li class=""><a href="../teacher/2010"><i class="fa fa-circle-o"></i>학생 목록</a></li>
           </ul>
         </li>
-        <li class="active treeview menu-open">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-book"></i> <span>문제 출력</span>
             <span class="pull-right-container">
@@ -150,8 +162,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="../problems/printMathsTest.jsp"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
-            <li class="active"><a href="../problems/printStudentGotWrong.jsp"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
+            <li class=""><a href="../problems/3010"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
+            <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
           </ul>
         </li>
       </ul>

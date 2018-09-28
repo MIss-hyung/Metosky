@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <!-- Content Header (Page header) -->
       <section class="content-header">
       <h1>
@@ -12,6 +13,22 @@
       </ol>
     </section>
     
+    <script>
+	<c:choose>
+	    <c:when test="${sessionScope.login.is_admin == 1 }">
+			$(document).ready(function() {
+				$('.sidebar-menu').children('.treeview').eq(1).addClass('active');
+				$('.sidebar-menu').children('.treeview').eq(1).children('ul').children('li').eq(0).addClass('active');
+			});
+	    </c:when>    
+	    <c:otherwise>
+			$(document).ready(function() {
+				$('.sidebar-menu').children('.treeview').eq(0).addClass('active');
+				$('.sidebar-menu').children('.treeview').eq(0).children('ul').children('li').eq(0).addClass('active');
+			});
+	    </c:otherwise>
+	</c:choose>
+	</script>	
     
     <!-- Main content -->
     <section class="content">
@@ -33,6 +50,18 @@
 				  					<th>계열</th>
 				  				</tr>
 				  			</thead>
+				  			<tbody>
+				  			  <c:forEach var="row" items="${list}">
+				  			  	<tr id="row_${row.s_id}">
+				  					<td>${row.s_id}</td>
+				  					<td>${row.s_name}</td>
+				  					<td>${row.s_school}</td>
+				  					<td>${row.s_year}</td>
+				  					<td>${row.major}</td>
+				  				</tr>
+				  			  </c:forEach>
+				  			</tbody>
+				  			<!--
 				  			<tbody>
 				  				<tr>
 				  					<td>12</td>
@@ -174,18 +203,21 @@
 				  					<td>2</td>
 				  					<td>이과</td>
 				  				</tr>
-				  			</tbody>
+				  			</tbody> -->
 				  		</table>
 				    </div>
 				    <!-- /.box-body -->
 				  </div>
+			</div>
+		</div>
+	</section>
 				  <!-- /.box -->
 				  
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
+    //$('#example2').DataTable()
     $('#students_list').DataTable()    
   })
 </script> 

@@ -21,5 +21,13 @@
 	<select id="login" resultType = "TeachersVO">
 		SELECT * FROM teachers WHERE t_email = #{t_email} AND t_pswd = #{t_pswd}
 	</select>
+	
+	<select id="teachersList" resultType="hashmap" parameterType="int">
+		SELECT t_id,t_name,t_phone,t_email,DATE_FORMAT(created, '%Y-%m-%d %H:%i') AS created_ko FROM teachers WHERE t_status = #{t_status} ORDER BY t_id DESC
+	</select>
+	
+	<update id="approveTeacher" parameterType="int">
+		UPDATE teachers SET t_status = #{t_status} WHERE t_id = #{t_id}
+	</update>
 
 </mapper>

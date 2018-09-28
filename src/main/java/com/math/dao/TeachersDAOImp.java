@@ -1,5 +1,8 @@
 package com.math.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,6 +36,18 @@ public class TeachersDAOImp implements TeachersDAO {
 	public TeachersVO login(TeachersVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".login", vo);
+	}
+
+	@Override
+	public List<Map<String,Object>> teachersList(int t_status) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".teachersList", t_status);
+	}
+
+	@Override
+	public void approveTeacher(TeachersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".approveTeacher", vo);
 	}
 	
 }
