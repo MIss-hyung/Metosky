@@ -21,5 +21,9 @@
 	<select id="login" resultType = "TeachersVO">
 		SELECT * FROM teachers WHERE t_email = #{t_email} AND t_pswd = #{t_pswd}
 	</select>
+	
+	<select id="teachersList" resultType="hashmap" parameterType="int">
+		SELECT t_id,t_name,t_phone,t_email,DATE_FORMAT(created, '%Y년%m월%d일 %H시%i분') AS created_ko FROM teachers WHERE t_status = #{t_status} ORDER BY t_id DESC
+	</select>
 
 </mapper>

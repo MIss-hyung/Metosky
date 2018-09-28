@@ -12,6 +12,12 @@
       </ol>
     </section>
     
+    <script>
+		$(document).ready(function() {
+			$('.sidebar-menu').children('.treeview').eq(1).addClass('active');
+			$('.sidebar-menu').children('.treeview').eq(1).children('ul').children('li').eq(0).addClass('active');
+		});
+	</script>	
     
     <!-- Main content -->
     <section class="content">
@@ -181,11 +187,11 @@
 				  </div>
 				  <!-- /.box -->
 				  
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
+    //$('#example2').DataTable()
     $('#students_list').DataTable()    
   })
 </script> 
