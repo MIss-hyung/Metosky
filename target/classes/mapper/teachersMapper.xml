@@ -8,8 +8,8 @@
 <mapper namespace="com.math.dao.TeachersDAO">
 
 	<insert id="insertTeacher">
-		INSERT INTO TEACHERS(t_name,t_email,t_pswd,created) VALUES
-		(#{t_name},#{t_email},#{t_pswd},#{created})
+		INSERT INTO teachers(t_name,t_email,t_pswd,created,is_admin) VALUES
+		(#{t_name},#{t_email},#{t_pswd},#{created},#{is_admin})
 	</insert>
 	
 	<select id="emailExistChk" parameterType="String" resultType="int">

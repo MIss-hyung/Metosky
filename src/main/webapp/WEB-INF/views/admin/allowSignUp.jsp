@@ -54,11 +54,11 @@
 		<div class="row">
         	<div class="col-xs-12">
   				<div class="box">
-  					<a href="students/studentsList.jsp">
+  					<!-- <a href="students/studentsList.jsp"> -->
 	  					<div class="box-header">
-	  						<h3 class="box-title">가입 승인 대기 목록</h3>
+	  						<h3 class="box-title">승인 대기 목록</h3>
 	  					</div>
-  					</a>
+  					<!-- </a> -->
   	
 				  	<div class="box-body">
 				  		<table id="students_list" class="table table-boardered table-hover table-responsive">
@@ -68,7 +68,7 @@
 				  					<th>이름</th>
 				  					<th>연락처</th>
 				  					<th>이메일</th>
-				  					<th>가입일</th>
+				  					<th>가입 신청일</th>
 				  					<th></th>
 				  					<th></th>
 				  				</tr>

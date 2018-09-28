@@ -23,11 +23,26 @@ public class AdminController {
 	private TeacherService service;
 	
 	@RequestMapping(value="/9010", method=RequestMethod.GET)
-	public ModelAndView list() throws Exception {
-		System.out.println("/admin/9010 called");
+	public ModelAndView signUpList() throws Exception {
 		List<Map<String, Object>> list = service.teachersList(0);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin/allowSignUp");
+		mav.addObject("list", list);
+		return mav;
+	}
+	@RequestMapping(value="/9020", method=RequestMethod.GET)
+	public ModelAndView acceptedList() throws Exception {
+		List<Map<String, Object>> list = service.teachersList(1);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/teachersList");
+		mav.addObject("list", list);
+		return mav;
+	}
+	@RequestMapping(value="/9030", method=RequestMethod.GET)
+	public ModelAndView notAcceptedList() throws Exception {
+		List<Map<String, Object>> list = service.teachersList(-1);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/notAccepted");
 		mav.addObject("list", list);
 		return mav;
 	}
