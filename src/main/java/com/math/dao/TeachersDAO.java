@@ -10,4 +10,5 @@ public interface TeachersDAO {
 	public int emailExistChk(String t_email) throws Exception;
 	public TeachersVO login(TeachersVO vo) throws Exception;
 	public List<Map<String,Object>> teachersList(int t_status) throws Exception;
+	public void approveTeacher(TeachersVO vo) throws Exception;
 }

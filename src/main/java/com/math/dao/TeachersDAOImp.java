@@ -44,5 +44,11 @@ public class TeachersDAOImp implements TeachersDAO {
 		return sqlSession.selectList(namespace+".teachersList", t_status);
 	}
 
+	@Override
+	public void approveTeacher(TeachersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".approveTeacher", vo);
+	}
+
 	
 }

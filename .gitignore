@@ -1,2 +1,8 @@
 target/m2e-wtp/web-resources/META-INF/maven/com.math/metosky/pom.properties
 *.class
+src/test/test.iml
+src/main/main.iml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml

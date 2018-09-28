@@ -2,13 +2,20 @@ package com.math.domain;
 
 public class TeachersVO {
 	
+	private int t_id;
 	private String t_name;
 	private String created;
 	private String t_email;
 	private String t_pswd;
 	private int is_admin;
 	private int t_status;
-
+	
+	public int getT_id() {
+		return t_id;
+	}
+	public void setT_id(int t_id) {
+		this.t_id = t_id;
+	}
 	public String getT_name() {
 		return t_name;
 	}

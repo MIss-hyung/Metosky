@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.math.dao.MenuManagerDAO">
+
+
+	<select id="menuList" resultType="hashmap" parameterType="int">
+		SELECT * FROM menu_manager  
+		 WHERE is_visible = 1
+		 <choose>
+		 	<when test="access_type = 1">
+		 		AND access_type IN(1,2)
+		 	</when>
+		 	<when test="access_type = 2">
+		 		AND access_type = 2 
+		 	</when>
+		 </choose>
+	</select>
+
+</mapper>

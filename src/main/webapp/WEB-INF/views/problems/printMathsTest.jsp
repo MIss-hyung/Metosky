@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <!-- Content Header (Page header) -->
       <section class="content-header">
       <h1>
@@ -11,6 +12,23 @@
         <li class="active">시험지 출력</li>
       </ol>
     </section>
+    
+    <script>
+		<c:choose>
+		    <c:when test="${sessionScope.login.is_admin == 1 }">
+				$(document).ready(function() {
+					$('.sidebar-menu').children('.treeview').eq(2).addClass('active');
+					$('.sidebar-menu').children('.treeview').eq(2).children('ul').children('li').eq(0).addClass('active');
+				});
+		    </c:when>    
+		    <c:otherwise>
+				$(document).ready(function() {
+					$('.sidebar-menu').children('.treeview').eq(1).addClass('active');
+					$('.sidebar-menu').children('.treeview').eq(1).children('ul').children('li').eq(0).addClass('active');
+				});
+		    </c:otherwise>
+		</c:choose>
+	</script>	
 
 	<section class="content">
 		<div class="row">
@@ -105,94 +123,6 @@
 				  					<td>1</td>
 				  					<td>문과</td>
 				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>21</td>
-				  					<td>송학생</td>
-				  					<td>숙명여고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>22</td>
-				  					<td>조학생</td>
-				  					<td>휘문고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>23</td>
-				  					<td>조가나</td>
-				  					<td>은광여고</td>
-				  					<td>3</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>24</td>
-				  					<td>심학생</td>
-				  					<td>휘문고</td>
-				  					<td>2</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>28</td>
-				  					<td>김이박</td>
-				  					<td>중동고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>30</td>
-				  					<td>최박이</td>
-				  					<td>휘문고</td>
-				  					<td>2</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>31</td>
-				  					<td>최나다</td>
-				  					<td>숙명여고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>32</td>
-				  					<td>주학생</td>
-				  					<td>휘문고</td>
-				  					<td>2</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>33</td>
-				  					<td>주가다</td>
-				  					<td>휘문고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>34</td>
-				  					<td>정가나</td>
-				  					<td>숙명여고</td>
-				  					<td>1</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>35</td>
-				  					<td>이이학</td>
-				  					<td>중동고</td>
-				  					<td>2</td>
-				  					<td>이과</td>
-				  				</tr>
 				  			</tbody>
 				  		</table>
 				    </div>
@@ -201,7 +131,7 @@
 				  <!-- /.box -->
 			</div>
 			
-			<a href="./problemSettings.jsp">
+			<a href="./3030">
 				<button type="button" class="btn btn-block btn-primary btn-lg" style="width:130px; float:right; margin-right: 18px">문제 설정</button>
 			</a>
 		</div>
