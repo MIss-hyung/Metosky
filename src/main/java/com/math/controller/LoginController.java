@@ -29,7 +29,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String loginPost(TeachersVO teacher, HttpSession session) throws Exception{
 		System.out.println("/login POST 방식 입니다.");
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		String returnURL = "";
 		//String msg= "로그인에 실패했습니다.";
 		
@@ -42,10 +42,14 @@ public class LoginController {
 		if(vo != null) {
 			session.setAttribute("login",vo);
 			returnURL = "redirect:/teacher/dashboard";
+			//mav.setViewName("redirect:/teacher/dashboard");
 			
 		}else {
-		mav.addObject("msg","failure");
+		//mav.addObject("msg","failure");
 			returnURL = "redirect:/";
+			//mav.setViewName("redirect:/");
+			mav.addObject("msg","failure");
+			
 		}
 		
 		return returnURL;
