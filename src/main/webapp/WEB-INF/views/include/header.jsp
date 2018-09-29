@@ -119,6 +119,24 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
+        
+<%--         	<c:forEach var="menu" items="${list}">
+        			<li class="treeview">
+        				<a href="#">
+        				    <c:if test="menu.m_depth == 1">
+        					<i class="fa ${menu.lnb_icon}"></i> <span>${menu.m_name}</span>
+        				    </c:if>
+        					<span class="pull-right-container">
+        						<i class="fa fa-angle-left pull-right"></i>
+        					</span>
+        				</a>
+        		
+        				<ul class="treeview-menu">
+        					
+        				</ul>
+        			</li>
+        		
+        	</c:forEach> --%>
 <!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
@@ -140,6 +158,8 @@
 	          </a>
 	          <ul class="treeview-menu">
 	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>강사 가입 승인</a></li>
+	            <li><a href="../admin/9020"><i class="fa fa-circle-o"></i>강사 가입 목록</a></li>
+	            <li><a href="../admin/9030"><i class="fa fa-circle-o"></i>승인 거절 목록</a></li>
 	          </ul>
 	        </li>
         </c:if>
