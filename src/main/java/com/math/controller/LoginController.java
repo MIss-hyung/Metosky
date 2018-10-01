@@ -41,6 +41,7 @@ public class LoginController {
 		
 		if(vo != null) {
 			session.setAttribute("login",vo);
+			/*
 <<<<<<< HEAD
 			returnURL = "redirect:/teacher/dashboard";
 			//mav.setViewName("redirect:/teacher/dashboard");
@@ -51,7 +52,7 @@ public class LoginController {
 			}else {
 				returnURL = "redirect:/teacher/2010";
 			}
->>>>>>> e0a9b4f22ba4c9dc2801df9d6f20fd196fb96b82
+>>>>>>> e0a9b4f22ba4c9dc2801df9d6f20fd196fb96b82 */
 		}else {
 		//mav.addObject("msg","failure");
 			returnURL = "redirect:/";

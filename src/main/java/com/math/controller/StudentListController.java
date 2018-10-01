@@ -35,4 +35,26 @@ public class StudentListController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/studentList", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> studentList(@RequestBody String filterJSON) throws Exception {
+		StudentsVO students = new StudentsVO();
+		
+		Map<String, Object> filter = JsonUtil.convertJsonToObject(filterJSON);
+		
+		String id = (String) filter.get("t_id");
+		String status = (String) filter.get("t_status");
+		
+		int t_id = Integer.parseInt(id);
+		int t_status = Integer.parseInt(status);
+		
+		students.setT_id(t_id);
+		students.setT_status(t_status);
+		
+		System.out.println("t_id : " + t_id + ",t_status : " + t_status);
+		service.studentList(students);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("status", true);
+		return map;
+	}
 }
