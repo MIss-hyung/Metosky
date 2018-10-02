@@ -57,7 +57,7 @@ public class TeachersVO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "TeachersVO [t_name=" + t_name + ", t_email=" + t_email + ", t_pswd=" + t_pswd + "]";
+		return "TeachersVO [t_id=" + t_id + ", t_name=" + t_name + ", t_email=" + t_email + ", t_pswd=" + t_pswd + "]";
 	}
 		  
 

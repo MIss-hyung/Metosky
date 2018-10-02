@@ -17,9 +17,9 @@ public class StudentListServicelmp implements StudentListService {
 	private StudentsDAO StudentsDAO;
 
 	@Override
-	public List<Map<String, Object>> StudentList(int t_status) throws Exception {
+	public List<Map<String, Object>> StudentsList(int t_id) throws Exception {
 		// TODO Auto-generated method stub
-		return StudentsDAO.studentList(t_status);
+		return StudentsDAO.studentsList(t_id);
 	}
 
 }
