@@ -23,7 +23,7 @@ public class MenuController {
 	@RequestMapping(value="/getMenuList/{accessType}", method=RequestMethod.POST)
 	public ModelAndView getMenuList(@PathVariable String accessType) throws Exception {
 		List<Map<String, Object>> list = service.menuList(2);
-		
+		System.out.println("accessType is " + accessType);
 		if(accessType == "admin") {
 			list = service.menuList(1);
 		}

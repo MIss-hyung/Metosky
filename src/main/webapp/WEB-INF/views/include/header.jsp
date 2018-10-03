@@ -119,7 +119,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-<%--         	<c:forEach var="menu" items="${list}">
+        	<c:forEach var="menu" items="${list}">
         			<li class="treeview">
         				<a href="#">
         				    <c:if test="menu.m_depth == 1">
@@ -134,7 +134,7 @@
         					
         				</ul>
         			</li>
-        	</c:forEach> --%>
+        	</c:forEach>
 <!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
