@@ -119,7 +119,6 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-
 <%--         	<c:forEach var="menu" items="${list}">
         			<li class="treeview">
         				<a href="#">

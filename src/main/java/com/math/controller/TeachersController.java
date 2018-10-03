@@ -67,7 +67,7 @@ public class TeachersController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String ct = sdf.format(date);
 		teacher.setCreated(ct);
-		teacher.setIs_admin(0);//admin이 아닌 경우
+		teacher.setIs_admin(0);
 		
 		System.out.println(teacher.toString());
 		service.insertTeacher(teacher);
