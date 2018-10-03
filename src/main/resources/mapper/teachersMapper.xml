@@ -9,7 +9,7 @@
 
 	<insert id="insertTeacher">
 		INSERT INTO teachers(t_name,t_email,t_pswd,created,is_admin) VALUES
-		(#{t_name},#{t_email},#{t_pswd},#{created},#{is_admin})
+		(#{t_name},#{t_email},PASSWORD(#{t_pswd}),#{created},#{is_admin})
 	</insert>
 	
 	<select id="emailExistChk" parameterType="String" resultType="int">
@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="login" resultType = "TeachersVO">
-		SELECT * FROM teachers WHERE t_email = #{t_email} AND t_pswd = #{t_pswd}
+		SELECT * FROM teachers WHERE t_email = #{t_email} AND t_pswd = PASSWORD(#{t_pswd})
 	</select>
 	
 	<select id="teachersList" resultType="hashmap" parameterType="int">

@@ -75,12 +75,13 @@
 		</div>
 	</section>
 	
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
-    $('#students_list').DataTable()    
+    $('#students_list').DataTable({
+    	"lengthMenu": [[10, 25, 50, -1], ["All", 10, 25, 50, ]]
+    })  
   })
 </script> 
 

@@ -166,7 +166,7 @@
           </a>
           <ul class="treeview-menu">
             <li class=""><a href="../problems/3010"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
-            <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
+            <!-- <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li> -->
           </ul>
         </li>
       </ul>

@@ -57,7 +57,7 @@
   					<!-- </a> -->
   	
 				  	<div class="box-body">
-				  		<table id="students_list" class="table table-boardered table-hover table-responsive">
+				  		<table id="teachers_list" class="table table-boardered table-hover table-responsive">
 				  			<thead>
 				  				<tr>
 				  					<th>ID</th>
@@ -101,8 +101,9 @@
 <script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
-    $('#students_list').DataTable()    
+    $('#teachers_list').DataTable({
+    	"lengthMenu": [[10, 25, 50, -1], ["All", 10, 25, 50, ]]
+    })    
   })
 </script> 
   

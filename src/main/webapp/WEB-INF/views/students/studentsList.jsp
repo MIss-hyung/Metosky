@@ -74,7 +74,9 @@
 <script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
   $(function () {
-    $('#students_list').DataTable()    
+    $('#students_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, -1], ["All", 10, 25, 50, ]]
+    })    
   })
 </script> 
 
