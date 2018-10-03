@@ -62,7 +62,7 @@ public class AdminController {
 		teacher.setT_id(t_id);
 		teacher.setT_status(t_status);
 		
-		System.out.println("t_id : " + t_id + ",t_status : " + t_status);
+//		System.out.println("t_id : " + t_id + ",t_status : " + t_status);
 		service.approveTeacher(teacher);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("status", true);

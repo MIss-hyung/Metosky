@@ -43,10 +43,6 @@
 		  		}
 		  	});
 		}
-		
-		function reject() {
-			
-		}
 		</script>	
 		<!-- Main content -->
 		<section class="content">

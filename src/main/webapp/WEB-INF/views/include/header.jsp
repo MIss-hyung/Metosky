@@ -119,22 +119,6 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-        	<c:forEach var="menu" items="${list}">
-        			<li class="treeview">
-        				<a href="#">
-        				    <c:if test="menu.m_depth == 1">
-        					<i class="fa ${menu.lnb_icon}"></i> <span>${menu.m_name}</span>
-        				    </c:if>
-        					<span class="pull-right-container">
-        						<i class="fa fa-angle-left pull-right"></i>
-        					</span>
-        				</a>
-        		
-        				<ul class="treeview-menu">
-        					
-        				</ul>
-        			</li>
-        	</c:forEach>
 <!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
@@ -146,7 +130,7 @@
             <li class="active"><a href="../dashboard/dashboard.jsp"><i class="fa fa-circle-o"></i> 대시보드</a></li>
           </ul>
         </li> -->
-<%--         <c:if test="${sessionScope.login.is_admin == 1 }">
+        <c:if test="${sessionScope.login.is_admin == 1 }">
 	        <li class="treeview">
 	          <a href="#">
 	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
@@ -155,13 +139,13 @@
 	            </span>
 	          </a>
 	          <ul class="treeview-menu">
-	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>강사 가입 승인</a></li>
+	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>가입 승인</a></li>
 	            <li><a href="../admin/9020"><i class="fa fa-circle-o"></i>강사 가입 목록</a></li>
 	            <li><a href="../admin/9030"><i class="fa fa-circle-o"></i>승인 거절 목록</a></li>
 	          </ul>
 	        </li>
-        </c:if> --%>
-<!--         <li class="treeview">
+        </c:if>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>학생 관리</span>
             <span class="pull-right-container">
@@ -183,7 +167,7 @@
             <li class=""><a href="../problems/3010"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
             <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
           </ul>
-        </li> -->
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

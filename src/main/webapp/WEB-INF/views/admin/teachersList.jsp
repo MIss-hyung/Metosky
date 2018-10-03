@@ -43,10 +43,6 @@
 		  		}
 		  	});
 		}
-		
-		function reject() {
-			
-		}
 		</script>	
 		<!-- Main content -->
 		<section class="content">
@@ -69,6 +65,7 @@
 				  					<th>연락처</th>
 				  					<th>이메일</th>
 				  					<th>가입 신청일</th>
+				  					<th>승인 취소</th>
 				  				</tr>
 				  			</thead>
 				  			<tbody>
@@ -79,6 +76,7 @@
 				  					<td>${row.t_phone}</td>
 				  					<td>${row.t_email}</td>
 				  					<td>${row.created_ko}</td>
+				  					<td><button class="btn btn-danger" id="${row.t_id}" value="0" onclick="approve(this)">승인 취소</button></td>
 				  				</tr>
 				  			  </c:forEach>
 				  			</tbody>
