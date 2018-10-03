@@ -32,7 +32,7 @@ public class PrintTestcontroller {
 			List<Map<String, Object>> list = service.AdminstudentsList();
 
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/students/studentsList");
+			mav.setViewName("/problems/printMathsTest");
 			mav.addObject("list", list);
 			return mav;
 			
@@ -40,7 +40,7 @@ public class PrintTestcontroller {
 			List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
 
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/students/studentsList");
+			mav.setViewName("/problems/printMathsTest");
 			mav.addObject("list", list);
 			return mav;
 		}

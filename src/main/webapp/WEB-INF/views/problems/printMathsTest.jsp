@@ -53,6 +53,7 @@
 				  			<tbody>
 				  				<c:forEach var="row" items="${list}">
 				  			  		<tr id="row_${row.s_id}">
+				  			  			<td><input type="checkbox" name="print_check_${row.s_id}" value="${row.s_id}"></td>
 				  						<td>${row.s_id}</td>
 				  						<td>${row.s_name}</td>
 				  						<td>${row.s_school}</td>
@@ -61,81 +62,6 @@
 				  					</tr>
 				  			  	</c:forEach>
 				  			 </tbody>
-				  			<!--  
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>12</td>
-				  					<td>김학생</td>
-				  					<td>숙명여고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>13</td>
-				  					<td>박학생</td>
-				  					<td>은광여고</td>
-				  					<td>2</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>14</td>
-				  					<td>이학생</td>
-				  					<td>휘문고</td>
-				  					<td>1</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>15</td>
-				  					<td>김가나</td>
-				  					<td>중대부고</td>
-				  					<td>1</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>16</td>
-				  					<td>박가나</td>
-				  					<td>중동고</td>
-				  					<td>2</td>
-				  					<td>이과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>17</td>
-				  					<td>이가나</td>
-				  					<td>개포고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>18</td>
-				  					<td>송가나</td>
-				  					<td>숙명여고</td>
-				  					<td>2</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>19</td>
-				  					<td>최학생</td>
-				  					<td>정신여고</td>
-				  					<td>3</td>
-				  					<td>문과</td>
-				  				</tr>
-				  				<tr>
-				  					<td><input type="checkbox" name="" value=""></td>
-				  					<td>20</td>
-				  					<td>최가나</td>
-				  					<td>숙명여고</td>
-				  					<td>1</td>
-				  					<td>문과</td>
-				  				</tr>
-				  			</tbody>
-				  			-->
 				  		</table>
 				    </div>
 				    <!-- /.box-body -->
