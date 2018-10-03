@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +49,11 @@ public class AdminController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	@RequestMapping(value="/9040", method=RequestMethod.GET)
+	public String manageAdmin( Model model, HttpSession session) throws Exception{
+		return "admin/manageAdmin";
+	}
+	
 	@RequestMapping(value="/signUpApprove", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> signUpApprove(@RequestBody String filterJSON) throws Exception {
@@ -59,6 +67,13 @@ public class AdminController {
 		int t_id = Integer.parseInt(id);
 		int t_status = Integer.parseInt(status);
 		
+		if(t_status == 2) {
+			teacher.setIs_admin(1);
+			t_status = 1;
+		}else if(t_status == 3) {
+			teacher.setIs_admin(0);
+			t_status = 1;
+		}
 		teacher.setT_id(t_id);
 		teacher.setT_status(t_status);
 		

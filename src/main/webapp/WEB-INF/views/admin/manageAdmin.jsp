@@ -6,18 +6,18 @@
 	<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				강사 가입 승인 
+				관리자 계정 관리
 	      	</h1>
 	      	<ol class="breadcrumb">
 	        	<li><a href="#"><i class="fa fa-lock"></i> 관리자 메뉴</a></li>
-	        	<li class="active">가입 승인</li>
+	        	<li class="active">관리자 계정 관리</li>
 	      	</ol>
 		</section>
 		<!--</section content header> -->
 		<script>
 		$(document).ready(function() {
 			$('.sidebar-menu').children('.treeview').eq(0).addClass('active');
-			$('.sidebar-menu').children('.treeview').eq(0).children('ul').children('li').eq(0).addClass('active');
+			$('.sidebar-menu').children('.treeview').eq(0).children('ul').children('li').eq(3).addClass('active');
 		});
 		
 		function approve(obj) {
@@ -52,7 +52,7 @@
   				<div class="box">
   					<!-- <a href="students/studentsList.jsp"> -->
 	  					<div class="box-header">
-	  						<h3 class="box-title">승인 대기 목록</h3>
+	  						<h3 class="box-title">승인 거절 목록</h3>
 	  					</div>
   					<!-- </a> -->
   	
@@ -65,9 +65,7 @@
 				  					<th>연락처</th>
 				  					<th>이메일</th>
 				  					<th>가입 신청일</th>
-				  					<th></th>
-				  					<th></th>
-				  					<th></th>
+				  					<th>거절 취소</th>
 				  				</tr>
 				  			</thead>
 				  			<tbody>
@@ -78,9 +76,7 @@
 				  					<td>${row.t_phone}</td>
 				  					<td>${row.t_email}</td>
 				  					<td>${row.created_ko}</td>
-				  					<td><button class="btn btn-success" id="${row.t_id}" value="1" onclick="approve(this)">승인</button></td>
-				  					<td><button class="btn btn-danger" id="${row.t_id}" value="-1" onclick="approve(this)">거절</button></td>
-				  					<td><button class="btn btn-warning" id="${row.t_id}" value="2" onclick="approve(this)">관리자로 승인</button></td>
+				  					<td><button class="btn btn-success" id="${row.t_id}" value="0" onclick="approve(this)">거절 취소</button></td>
 				  				</tr>
 				  			  </c:forEach>
 				  			</tbody>

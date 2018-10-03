@@ -100,12 +100,12 @@
         <div class="pull-left image">
           <!-- <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image"> -->
         </div>
-        <div class="pull-left info">
+        <div class="pull-left info" style="margin-bottom:5px;">
           <p>${sessionScope.login.t_name} 선생님</p>
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+<!--       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -114,11 +114,11 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> -->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">메뉴</li>
+        <li class="header" style="margin-top:10px;">메뉴</li>
 <!--         <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>한 눈에 보기</span>
@@ -131,7 +131,7 @@
           </ul>
         </li> -->
         <c:if test="${sessionScope.login.is_admin == 1 }">
-	        <li class="treeview">
+	        <li class="treeview" >
 	          <a href="#">
 	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
 	            <span class="pull-right-container">
@@ -142,6 +142,7 @@
 	            <li><a href="../admin/9010"><i class="fa fa-circle-o"></i>가입 승인</a></li>
 	            <li><a href="../admin/9020"><i class="fa fa-circle-o"></i>강사 가입 목록</a></li>
 	            <li><a href="../admin/9030"><i class="fa fa-circle-o"></i>승인 거절 목록</a></li>
+	            <!-- <li><a href="../admin/9040"><i class="fa fa-circle-o"></i>관리자 계정 관리</a></li> -->
 	          </ul>
 	        </li>
         </c:if>

@@ -24,6 +24,14 @@
 			var t_id = obj.id;
 			var t_status = obj.value;
 			var row_id = "#row_" + t_id;
+			var cancel_id = ".cancel_" + t_id;
+			var approve_admin = ".admin_" + t_id;
+			if(t_status == 3) {
+				var admin_cancel = 1;
+			}
+			if(t_status == 2) {
+				var admin_approve = 1;
+			}
 			
 			var request = {	t_id : t_id, t_status : t_status};
 			
@@ -35,7 +43,16 @@
 		  		dataType: "json",
 		  		contentType: "application/json; charset=UTF-8",
 		  		success : function(data) {
-		  			$(row_id).remove();
+		  			if(admin_cancel) {
+		  				$(cancel_id).remove();
+		  				$(approve_admin).add();
+		  			}else if(admin_approve) {
+		  				$(cancel_id).add();
+		  				$(approve_admin).remove();
+		  			}else{
+		  				$(row_id).remove();
+		  			}
+		  			location.reload();
 		  		},
 		  		error : function(error) {
 		  			alert("error: " + error);
@@ -66,6 +83,7 @@
 				  					<th>이메일</th>
 				  					<th>가입 신청일</th>
 				  					<th>승인 취소</th>
+				  					<th>관리자 지정</th>
 				  				</tr>
 				  			</thead>
 				  			<tbody>
@@ -77,6 +95,12 @@
 				  					<td>${row.t_email}</td>
 				  					<td>${row.created_ko}</td>
 				  					<td><button class="btn btn-danger" id="${row.t_id}" value="0" onclick="approve(this)">승인 취소</button></td>
+				  					<c:if test="${row.is_admin == 1 }">
+				  						<td><button class="btn btn-info cancel_${row.t_id}" name="cancel_${row.t_id}" id="${row.t_id}" value="3" onclick="approve(this)">관리자 취소</button></td>
+				  					</c:if>
+				  					<c:if test="${row.is_admin == 0 }">
+				  						<td><button class="btn btn-warning admin_${row.t_id}" name="admin_${row.t_id}" id="${row.t_id}" value="2" onclick="approve(this)">관리자로 승인</button></td>
+				  					</c:if>
 				  				</tr>
 				  			  </c:forEach>
 				  			</tbody>
