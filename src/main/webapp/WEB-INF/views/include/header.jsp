@@ -119,7 +119,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
-        
+
 <%--         	<c:forEach var="menu" items="${list}">
         			<li class="treeview">
         				<a href="#">
@@ -135,7 +135,6 @@
         					
         				</ul>
         			</li>
-        		
         	</c:forEach> --%>
 <!--         <li class="active treeview menu-open">
           <a href="#">
@@ -148,7 +147,7 @@
             <li class="active"><a href="../dashboard/dashboard.jsp"><i class="fa fa-circle-o"></i> 대시보드</a></li>
           </ul>
         </li> -->
-        <c:if test="${sessionScope.login.is_admin == 1 }">
+<%--         <c:if test="${sessionScope.login.is_admin == 1 }">
 	        <li class="treeview">
 	          <a href="#">
 	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
@@ -162,8 +161,8 @@
 	            <li><a href="../admin/9030"><i class="fa fa-circle-o"></i>승인 거절 목록</a></li>
 	          </ul>
 	        </li>
-        </c:if>
-        <li class="treeview">
+        </c:if> --%>
+<!--         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>학생 관리</span>
             <span class="pull-right-container">
@@ -185,7 +184,7 @@
             <li class=""><a href="../problems/3010"><i class="fa fa-circle-o"></i>시험지 출력</a></li>
             <li class=""><a href="../problems/3020"><i class="fa fa-circle-o"></i>오답노트 출력</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
