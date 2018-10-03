@@ -8,8 +8,11 @@
 <mapper namespace="com.math.dao.StudentsDAO">
 
 	<select id="studentsList" resultType="hashmap" parameterType="int">
-		SELECT s_id,s_name,s_school,s_year,major FROM students WHERE t_id = #{t_id} ORDER BY s_id DESC
+		SELECT * FROM students WHERE t_id = #{t_id} ORDER BY s_id DESC
 	</select>
 	
+	<select id="adminstudentsList" resultType="hashmap" parameterType="int">
+		SELECT * FROM students ORDER BY s_id DESC
+	</select>
 
 </mapper>

@@ -24,4 +24,11 @@ public class StudentsDAOlmp implements StudentsDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".studentsList", t_id);
 	}
+	
+	@Override
+	   public List<Map<String, Object>> AdminstudentsList() throws Exception {
+	      // TODO Auto-generated method stub
+	      return sqlSession.selectList(namespace+".adminstudentsList");
+	   }
+	
 }

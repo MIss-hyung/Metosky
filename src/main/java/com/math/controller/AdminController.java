@@ -21,7 +21,7 @@ public class AdminController {
 	
 	@Inject
 	private TeacherService service;
-	
+
 	@RequestMapping(value="/9010", method=RequestMethod.GET)
 	public ModelAndView signUpList() throws Exception {
 		List<Map<String, Object>> list = service.teachersList(0);
@@ -46,7 +46,6 @@ public class AdminController {
 		mav.addObject("list", list);
 		return mav;
 	}
-	
 	@RequestMapping(value="/signUpApprove", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> signUpApprove(@RequestBody String filterJSON) throws Exception {
@@ -69,4 +68,5 @@ public class AdminController {
 		map.put("status", true);
 		return map;
 	}
+	
 }

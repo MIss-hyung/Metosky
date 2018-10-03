@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,15 +31,33 @@ public class StudentListController {
 	@RequestMapping(value="/2010", method=RequestMethod.GET)
 	public ModelAndView list(HttpSession session) throws Exception {
 		//System.out.println("/admin/9010 called");
+		//System.out.println(vo.getIs_admin());
 		Object obj = session.getAttribute("login");
 		TeachersVO vo = (TeachersVO) obj;
-		
-		List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
+		/*
+		if(vo != null) {
+			session.setAttribute("login",vo);
+		 */
+			if(vo.getIs_admin() == 1) {// 어드민이면 
+				List<Map<String, Object>> list = service.AdminstudentsList();
 
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/students/studentsList");
-		mav.addObject("list", list);
-		return mav;
+				ModelAndView mav = new ModelAndView();
+				mav.setViewName("/students/studentsList");
+				mav.addObject("list", list);
+				return mav;
+				
+			}else { //아닌경우
+				List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
+
+				ModelAndView mav = new ModelAndView();
+				mav.setViewName("/students/studentsList");
+				mav.addObject("list", list);
+				return mav;
+			}
+			
+		}
 	}
 
-}
+
+	
+

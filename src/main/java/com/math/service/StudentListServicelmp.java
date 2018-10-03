@@ -21,5 +21,16 @@ public class StudentListServicelmp implements StudentListService {
 		// TODO Auto-generated method stub
 		return StudentsDAO.studentsList(t_id);
 	}
+	
+	@Override
+	public List<Map<String, Object>> AdminstudentsList() throws Exception {
+		// TODO Auto-generated method stub
+		return StudentsDAO.AdminstudentsList();
+	}
+	
+	
+
 
 }
+
+
