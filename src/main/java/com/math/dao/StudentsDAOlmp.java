@@ -18,24 +18,17 @@ public class StudentsDAOlmp implements StudentsDAO {
 	private SqlSession sqlSession;
 	
 	private static final String namespace = "com.math.dao.StudentsDAO";
+
+	@Override
+	public List<Map<String, Object>> studentsList(int t_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".studentsList", t_id);
+	}
 	
 	@Override
-	public List<Map<String,Object>> studentsList(int t_status) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".studentsList", t_status);
-	}
-
-	@Override
-	public List<Map<String, Object>> studentList(int t_status) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void studentList(StudentsVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
+	   public List<Map<String, Object>> AdminstudentsList() throws Exception {
+	      // TODO Auto-generated method stub
+	      return sqlSession.selectList(namespace+".adminstudentsList");
+	   }
 	
 }

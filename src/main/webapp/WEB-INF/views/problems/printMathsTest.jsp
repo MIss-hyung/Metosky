@@ -51,6 +51,17 @@
 				  				</tr>
 				  			</thead>
 				  			<tbody>
+				  				<c:forEach var="row" items="${list}">
+				  			  		<tr id="row_${row.s_id}">
+				  						<td>${row.s_id}</td>
+				  						<td>${row.s_name}</td>
+				  						<td>${row.s_school}</td>
+				  						<td>${row.s_year}</td>
+				  						<td>${row.major}</td>
+				  					</tr>
+				  			  	</c:forEach>
+				  			 </tbody>
+				  			<!--  
 				  				<tr>
 				  					<td><input type="checkbox" name="" value=""></td>
 				  					<td>12</td>
@@ -124,6 +135,7 @@
 				  					<td>문과</td>
 				  				</tr>
 				  			</tbody>
+				  			-->
 				  		</table>
 				    </div>
 				    <!-- /.box-body -->
