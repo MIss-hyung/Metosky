@@ -53,6 +53,7 @@
 				  			<tbody>
 				  				<c:forEach var="row" items="${list}">
 				  			  		<tr id="row_${row.s_id}">
+				  			  			<td><input type="checkbox" name="print_check_${row.s_id}" value="${row.s_id}"></td>
 				  						<td>${row.s_id}</td>
 				  						<td>${row.s_name}</td>
 				  						<td>${row.s_school}</td>
