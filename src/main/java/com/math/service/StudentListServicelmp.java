@@ -27,9 +27,6 @@ public class StudentListServicelmp implements StudentListService {
 		// TODO Auto-generated method stub
 		return StudentsDAO.AdminstudentsList();
 	}
-	
-	
-
 
 }
 

@@ -10,7 +10,7 @@
     <strong>Copyright &copy; 2018 <a href="http://www.metosky.com">미투스카이 수학학원</a></strong> All rights
     reserved.
   </footer>  
-</div>
+  </div>
 <!-- ./wrapper -->
 
 </body>

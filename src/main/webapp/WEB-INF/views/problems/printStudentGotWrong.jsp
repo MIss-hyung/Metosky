@@ -20,7 +20,7 @@
 					$('.sidebar-menu').children('.treeview').eq(2).addClass('active');
 					$('.sidebar-menu').children('.treeview').eq(2).children('ul').children('li').eq(1).addClass('active');
 				});
-		    </c:when>    
+		    </c:when> 
 		    <c:otherwise>
 				$(document).ready(function() {
 					$('.sidebar-menu').children('.treeview').eq(1).addClass('active');
@@ -28,7 +28,7 @@
 				});
 		    </c:otherwise>
 		</c:choose>
-	</script>	
+	</script>
 
 <jsp:include page="../include/footer.jsp"/>
 

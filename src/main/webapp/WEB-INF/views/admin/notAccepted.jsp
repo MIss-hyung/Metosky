@@ -90,7 +90,7 @@
          	<!-- /.col-->
   		</div>
   		<!-- /.row-->
-  		
+  		</section>
   		
 <!-- DataTables -->
 <script src="${pageContext.request.contextPath}/resources/theme/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>

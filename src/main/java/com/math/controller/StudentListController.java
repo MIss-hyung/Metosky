@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,7 +38,7 @@ public class StudentListController {
 		/*
 		if(vo != null) {
 			session.setAttribute("login",vo);
-		 */
+		*/
 			if(vo.getIs_admin() == 1) {// 어드민이면 
 				List<Map<String, Object>> list = service.AdminstudentsList();
 
@@ -54,9 +55,15 @@ public class StudentListController {
 				mav.addObject("list", list);
 				return mav;
 			}
-			
 		}
-	}
+}
+//	@RequestMapping(value = "/test_check",method = RequestMethod.POST)
+//	@ResponseBody
+//	public Class<valueArrTest[]> testCheck(@RequestParam(value = "valueArrTest[]")List <String> valueArr) {
+//		return valueArrTest[]
+//		}
+//	}
+
 
 
 	

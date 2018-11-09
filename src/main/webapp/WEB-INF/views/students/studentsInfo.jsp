@@ -124,5 +124,5 @@
 			<img src="../../sources/QST0002357.png" width="450">
 		</div>
 
-<jsp:include page="../include/footer.jsp"/>
-
+	<jsp:include page="../include/footer.jsp"/>
+</section>

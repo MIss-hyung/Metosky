@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.math.dao.ProblemsDAO">
+
+  <select id="problemTest" parameterType="String" resultType="String">
+	SELECT p_code FROM problems where p_id IN (    
+      SELECT p_id FROM problems 
+         where p_unit = #{p_unit} 
+            and p_subject = #{p_subject} 
+            and p_source = #{p_source} 
+            and p_difficulty = #{p_difficulty}
+      	)
+	ORDER BY RAND()
+	LIMIT #{p_size}
+	</select>
+	<!-- p_code가 추출된다 -->
+
+
+</mapper>

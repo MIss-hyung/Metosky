@@ -105,7 +105,8 @@
         </div>
       </div>
       <!-- search form -->
-<!--       <form action="#" method="get" class="sidebar-form">
+      <!-- 
+      <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -131,7 +132,7 @@
           </ul>
         </li> -->
         <c:if test="${sessionScope.login.is_admin == 1 }">
-	        <li class="treeview" >
+	        <li class="treeview">
 	          <a href="#">
 	            <i class="fa fa-lock"></i> <span>관리자 메뉴</span>
 	            <span class="pull-right-container">
@@ -174,4 +175,6 @@
     <!-- /.sidebar -->
   </aside>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+	<!--  </div> -->
+  <div class="content-wrapper">
+  <!-- </div> -->
