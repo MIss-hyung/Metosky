@@ -2,6 +2,53 @@ package com.math.domain;
 
 public class ProblemsVO {
 	
+	private String p_subject;
+	private String p_source;
+	private String p_unit;
+	private String p_difficulty;
+	private int p_size;
+	
+	public String getP_subject() {
+		return p_subject;
+	}
+	public void setP_subject(String p_subject) {
+		this.p_subject = p_subject;
+	}
+	
+	public String getP_source() {
+		return p_source;
+	}
+	public void setP_source(String p_source) {
+		this.p_source = p_source;
+	}
+	
+	public String getP_unit() {
+		return p_unit;
+	}
+	public void setP_unit(String p_unit) {
+		this.p_unit = p_unit;
+	}
+	
+	public String getP_difficulty() {
+		return p_difficulty;
+	}
+	public void setP_difficulty(String p_difficulty) {
+		this.p_difficulty = p_difficulty;
+	}
+	
+	public int getP_size() {
+		return p_size;
+	}
+	public void setP_size(int p_size) {
+		this.p_size = p_size;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "ProblemVO [p_subject=" + p_subject + ", p_source=" + p_source + ", p_unit=" + p_unit + ", p_difficulty=" + p_difficulty +"p_size=" +p_size + "]";
+	}
+	/*
 	private int p_id;
 	private String p_code;
 	private int p_s3;
@@ -54,7 +101,7 @@ public class ProblemsVO {
 	}
 	
 	
-	/*
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

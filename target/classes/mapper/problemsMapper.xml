@@ -5,7 +5,7 @@
   
 <mapper namespace="com.math.dao.ProblemsDAO">
 
-  <select id="problemTest" parameterType="String" resultType="String">
+  <select id="problemList" parameterType="ProblemsVO" resultType="String">
 	SELECT p_code FROM problems where p_id IN (    
       SELECT p_id FROM problems 
          where p_unit = #{p_unit} 
