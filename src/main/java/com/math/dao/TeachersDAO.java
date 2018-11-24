@@ -1,5 +1,6 @@
 package com.math.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,4 +12,6 @@ public interface TeachersDAO {
 	public TeachersVO login(TeachersVO vo) throws Exception;
 	public List<Map<String,Object>> teachersList(int t_status) throws Exception;
 	public void approveTeacher(TeachersVO vo) throws Exception;
+	//public void keepLogin(String t_email, String sessionId, Date sessionLimit) throws Exception; //
+	//public TeachersVO checkUserWithSessionKey(String value) throws Exception; //
 }

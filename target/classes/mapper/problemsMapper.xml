@@ -17,6 +17,15 @@
 	LIMIT #{p_size}
 	</select>
 	<!-- p_code가 추출된다 -->
+	
+	<select id="problemSelectList" resultType="hashmap" parameterType="String">
+		SELECT * FROM problems
+	</select>
+	
+	<select id="subjectList" resultType="String" parameterType="String">
+		SELECT DISTINCT p_subject FROM problems
+	</select>
+	
 
 
 </mapper>

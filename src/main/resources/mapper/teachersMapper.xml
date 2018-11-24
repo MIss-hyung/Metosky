@@ -30,4 +30,5 @@
 		UPDATE teachers SET t_status = #{t_status}, is_admin = #{is_admin} WHERE t_id = #{t_id}
 	</update>
 
+
 </mapper>

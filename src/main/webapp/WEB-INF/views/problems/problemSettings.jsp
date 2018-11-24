@@ -74,33 +74,46 @@
 									<tr>
 										<td>
 											<select name="p_subject" id="p_subject" class="form-control getcha">
+											<c:forEach var="row" items="${list}">
+				  			  					<option id="row_${row.p_subject}"> </option>
+				  			  					
+				  			 			 	</c:forEach><!--  
 												<option value="su-sang">수학 상</option>
 												<option value="su-ha">수학 하</option>
 												<option value="su1">수학 1</option>
-												<option value="su2">수학 2</option>
+												<option value="su2">수학 2</option> -->
 											</select>
 										</td>
 										<td>
 											<select name="p_source" id="p_source" class="form-control getcha">
+											<c:forEach var="row" items="${list}">
+				  			  					<option id="row_${row.p_source}"> </option>
+				  			 			 	</c:forEach><!--
 												<option value="ssen">쎈</option>
 												<option value="black">블랙라벨</option>
-												<option value="jeong">수학의 정석</option>
+												<option value="jeong">수학의 정석</option>  -->
 											</select>
 										</td>
 										<td>
 											<select name="p_unit" id="p_unit" class="form-control getcha">
+											 <c:forEach var="row" items="${list}">
+				  			  					<option id="row_${row.p_unit}"> </option>
+				  			 			 	</c:forEach><!-- 
 												<option value="jisulog">지수와 로그함수</option>
 												<option value="odd">경우의수</option>
-												<option value="suyeolhap">수열의합</option>
+												<option value="suyeolhap">수열의합</option> -->
 											</select>
 										</td>
 										<td>
 											<select name="p_difficulty" id="p_difficulty" class="form-control getcha">
+											<c:forEach var="row" items="${list}">
+				  			  					<option id="row_${row.p_difficulty}"> </option>
+				  			 			 	</c:forEach><!-- 
 												<option value="2points">2점</option>
 												<option value="3points">3점</option>
 												<option value="n21">21번</option>
 												<option value="sang">상</option>
-												<option value="ha">하</option>
+												<option value="ha">하</option> -->
 											</select>
 										</td>
 										<td>

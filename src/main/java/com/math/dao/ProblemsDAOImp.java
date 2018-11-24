@@ -1,6 +1,8 @@
 package com.math.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import com.math.domain.ProblemsVO;
 
@@ -13,14 +15,13 @@ public class ProblemsDAOImp implements ProblemsDAO{
 	private SqlSession sqlSession;
 	
 	private static final String namespace = "com.math.dao.ProblemsDAO";
-	/*
-	public String ProblemTest(String p_code) throws Exception {
-		// TODO Auto-generated method stub
-		String code = sqlSession.selectOne(namespace+".printproblem", p_code);
-		return code;
+	
+	@Override
+	public List<Map<String, Object>> problemSelectList() throws Exception{
+		return sqlSession.selectList(namespace+".problemSelectList");
 	}
 	
-	
+	/*
 	public String ProblemTest(ProblemsVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".problemTest", vo);
@@ -36,5 +37,11 @@ public class ProblemsDAOImp implements ProblemsDAO{
 	public List<String> problemList(ProblemsVO pv) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".problemList", pv);
+	}
+
+	@Override
+	public List<String> getsubjectlist() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+ ".subjectList");
 	}
 }

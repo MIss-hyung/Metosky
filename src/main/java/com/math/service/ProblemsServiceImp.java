@@ -1,6 +1,8 @@
 package com.math.service;
 
 import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -29,4 +31,15 @@ public class ProblemsServiceImp implements ProblemsService {
 	public List<String> problemList(ProblemsVO pv) throws Exception {
 		return dao.problemList(pv);
 	}
+	@Override
+	public List<Map<String, Object>> problemSelectList() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.problemSelectList();
+	}
+	@Override
+	public List<String> getsubjectlist() throws Exception{
+		// TODO Auto-generated method stub
+		return dao.getsubjectlist();
+	}
+	
 }

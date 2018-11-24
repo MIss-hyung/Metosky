@@ -1,6 +1,7 @@
 package com.math.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class PrintTestcontroller {
          ModelAndView mav = new ModelAndView();
          mav.setViewName("/problems/printMathsTest");
          mav.addObject("list", list);
-         
+         System.out.println(list + " << 모든 학생값 받아오나? ");
          return mav;
          
       }else { 
@@ -63,15 +64,24 @@ public class PrintTestcontroller {
    
    @RequestMapping(value="/3030", method = {RequestMethod.GET, RequestMethod.POST})
    public ModelAndView problemSettings(Model model, HttpSession session,@RequestParam("selected_students") String selected_students) throws Exception {
+	  
+	  List<Map<String, Object>> list = service2.problemSelectList();
+	  List<String> subjectlist = service2.getsubjectlist();
       ModelAndView mav= new ModelAndView();
-     // System.out.println(selected_students + " << 학생값 받아오나 ");
+      System.out.println(selected_students + " << 학생값 받아오나 ");
+      System.out.println(list + " << 리스트값 받아오나? ");
+      System.out.println(subjectlist+"<<subj");
+      
+      
       selected_students=selected_students.substring(0, selected_students.length()-1);
    
       mav.addObject("selected_students", selected_students);
+      mav.addObject("list", list);
       mav.setViewName("/problems/problemSettings");
 
       return mav;
    }
+  
    
    @ResponseBody
    @RequestMapping(value="/downTest", method = {RequestMethod.GET, RequestMethod.POST})
@@ -115,4 +125,5 @@ public class PrintTestcontroller {
       mav.addObject("eachproblem", pvolist);
       return mav;
    }
+   
 }
