@@ -44,4 +44,10 @@ public class ProblemsDAOImp implements ProblemsDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+ ".subjectList");
 	}
+
+	@Override
+	public List<String> getsourcelist(String p_subject) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+ ".sourceList", p_subject);
+	}
 }

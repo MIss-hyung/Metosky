@@ -41,5 +41,10 @@ public class ProblemsServiceImp implements ProblemsService {
 		// TODO Auto-generated method stub
 		return dao.getsubjectlist();
 	}
+	@Override
+	public List<String> getsourcelist(String p_subject) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getsourcelist(p_subject);
+	}
 	
 }

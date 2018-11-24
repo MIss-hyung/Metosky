@@ -74,24 +74,16 @@
 									<tr>
 										<td>
 											<select name="p_subject" id="p_subject" class="form-control getcha">
-											<c:forEach var="row" items="${list}">
-				  			  					<option id="row_${row.p_subject}"> </option>
-				  			  					
-				  			 			 	</c:forEach><!--  
-												<option value="su-sang">수학 상</option>
-												<option value="su-ha">수학 하</option>
-												<option value="su1">수학 1</option>
-												<option value="su2">수학 2</option> -->
+											<c:forEach items="${subjectlist}" var="row" >
+				  			  					<option value="${row}"> ${row} </option>
+				  			 			 	</c:forEach>
 											</select>
 										</td>
 										<td>
 											<select name="p_source" id="p_source" class="form-control getcha">
-											<c:forEach var="row" items="${list}">
-				  			  					<option id="row_${row.p_source}"> </option>
-				  			 			 	</c:forEach><!--
-												<option value="ssen">쎈</option>
-												<option value="black">블랙라벨</option>
-												<option value="jeong">수학의 정석</option>  -->
+											<c:forEach var="row" items="${sourcelist}">
+				  			  					<option value="${row}"> ${row} </option>
+				  			 			 	</c:forEach>
 											</select>
 										</td>
 										<td>
@@ -143,6 +135,7 @@
 		학생 : ${selected_students}
 	</section>
 	<div id="printProblems">
+	
 	</div>
 
 
@@ -214,6 +207,41 @@
 		}
 
 	 });
+	
+	$(document).on("change", "#p_subject", function() {
+		var p = $(this).val()
+		
+		$.ajax({
+	  		async: false,
+	  		type : 'POST',
+	  		data : {"p":p},
+	  		url	 : "./selectP",
+	  		success : function(data) {
+	  			alert(data);
+	  			var callback = function (data) {
+
+	  			    // Get select
+	  			    var select = document.getElementById('sourcelist');
+
+	  			    // Add options
+	  			    for (var i in data) {
+	  			        $(select).append('<option value=' + data[i] + '>' + data[i] + '</option>');
+	  			    }
+
+	  			    // Set selected value
+	  			    $(select).val(data[1]);
+	  			}
+	  		},
+	  		
+	  		error:function(request,status,error){
+	  	        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	  	       },
+	  	     complete : function(data) {
+	  	                 //  실패했어도 완료가 되었을 때 처리
+	  	        }
+
+	  	});
+	});
 
 </script>
 

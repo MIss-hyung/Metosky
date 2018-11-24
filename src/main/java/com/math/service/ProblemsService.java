@@ -14,4 +14,5 @@ public interface ProblemsService {
 	public List<String> problemList(ProblemsVO pv) throws Exception;
 	public List<Map<String,Object>> problemSelectList() throws Exception;
 	public List<String> getsubjectlist() throws Exception;
+	public List<String> getsourcelist(String p_subject) throws Exception;
 }

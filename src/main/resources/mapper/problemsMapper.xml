@@ -26,6 +26,10 @@
 		SELECT DISTINCT p_subject FROM problems
 	</select>
 	
+	<select id="sourceList" resultType="String" parameterType="String">
+		SELECT DISTINCT p_source FROM problems where p_subject = #{p_subject};
+	</select>
+	
 
 
 </mapper>

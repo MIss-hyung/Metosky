@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +38,7 @@ public class PrintTestcontroller {
       Object obj = session.getAttribute("login");
       TeachersVO vo = (TeachersVO) obj;
       
-      if(vo.getIs_admin() == 1) {//
+      if(vo.getIs_admin() == 1) {
          List<Map<String, Object>> list = service.AdminstudentsList();
 
          ModelAndView mav = new ModelAndView();
@@ -67,22 +68,36 @@ public class PrintTestcontroller {
 	  
 	  List<Map<String, Object>> list = service2.problemSelectList();
 	  List<String> subjectlist = service2.getsubjectlist();
+
       ModelAndView mav= new ModelAndView();
-      System.out.println(selected_students + " << 학생값 받아오나 ");
-      System.out.println(list + " << 리스트값 받아오나? ");
+      //System.out.println(selected_students + " << 학생값 받아오나 ");
+     // System.out.println(list + " << 리스트값 받아오나? ");
       System.out.println(subjectlist+"<<subj");
-      
       
       selected_students=selected_students.substring(0, selected_students.length()-1);
    
       mav.addObject("selected_students", selected_students);
       mav.addObject("list", list);
+      mav.addObject("subjectlist", subjectlist);
       mav.setViewName("/problems/problemSettings");
 
       return mav;
    }
-  
    
+   @ResponseBody
+   @RequestMapping(value="/selectP", produces = "application/json;charset=utf8", method = {RequestMethod.GET, RequestMethod.POST})
+   public List<String> selectP(Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	   //response.setCharacterEncoding(UTF-8);
+	   String requestvalue=request.getParameter("p");
+	   System.out.println(requestvalue);
+	   
+	   
+	   List<String> sourcelist = service2.getsourcelist(requestvalue);
+	   System.out.println(sourcelist+"<<여기");
+	   
+	   return sourcelist;
+   }
+
    @ResponseBody
    @RequestMapping(value="/downTest", method = {RequestMethod.GET, RequestMethod.POST})
    public ModelAndView FileEx(Model model, HttpSession session, HttpServletRequest request) throws Exception {
