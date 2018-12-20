@@ -1,13 +1,15 @@
 package com.math.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import com.math.domain.ProblemsVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.math.domain.ProblemsVO;
 
 @Repository
 public class ProblemsDAOImp implements ProblemsDAO{
@@ -49,5 +51,30 @@ public class ProblemsDAOImp implements ProblemsDAO{
 	public List<String> getsourcelist(String p_subject) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+ ".sourceList", p_subject);
+	}
+	
+	@Override
+	public List<String> getunitlist(String p_subject ,String p_source) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, String> sqlmap = new HashMap<>();
+		sqlmap.put(p_subject, p_subject);
+		sqlmap.put(p_source, p_subject);
+		return sqlSession.selectList(namespace+ ".unitList", sqlmap);
+	}
+
+	@Override
+	public List<String> getdifficultylist(String p_subject , String p_source, String p_unit) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, String> sqlmap = new HashMap<>();
+		sqlmap.put(p_subject, p_subject);
+		sqlmap.put(p_source, p_subject);
+		sqlmap.put(p_unit, p_unit);
+		return sqlSession.selectList(namespace+ ".difficultyList", sqlmap);
+	}
+
+	@Override
+	public String getS3codes(String p_code) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".s3codeList",p_code);
 	}
 }

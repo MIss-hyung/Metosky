@@ -46,5 +46,19 @@ public class ProblemsServiceImp implements ProblemsService {
 		// TODO Auto-generated method stub
 		return dao.getsourcelist(p_subject);
 	}
+	@Override
+	public List<String> getunitlist(String p_subject, String p_source) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getunitlist(p_subject ,p_source);
+	}
+	@Override
+	public List<String> getdifficultylist(String p_subject , String p_source, String p_unit) throws Exception {
+		return dao.getdifficultylist(p_subject,p_source,p_unit);
+	}
+	@Override
+	public String getS3codes(String p_code) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getS3codes(p_code);
+	}
 	
 }

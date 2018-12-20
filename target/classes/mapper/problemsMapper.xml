@@ -30,6 +30,21 @@
 		SELECT DISTINCT p_source FROM problems where p_subject = #{p_subject};
 	</select>
 	
-
-
+	<select id="unitlist" resultType="String" parameterType="String">
+		SELECT DISTINCT p_unit FROM problems where p_source in (SELECT DISTINCT p_source 
+		From p_source = #{p_source}
+		WHere p_subject = #{p_subject});
+	</select>
+	
+	<select id="difficultylist" resultType="String" parameterType="String">
+		SELECT DISTINCT p_difficulty FROM problems where p_unit in 
+		(SELECT DISTINCT p_unit 
+		From p_unit = #{p_unit}
+		WHere p_source = #{p_source}
+		and p_subject = p_subject);
+	</select>
+	
+	<select id="s3CodeList" resultType="String" parameterType="String">
+		SELECT p_s3 FROM problems where p_code = #{p_code}
+	</select>
 </mapper>

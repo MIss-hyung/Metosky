@@ -48,11 +48,11 @@
 							<div class="form-group col-lg-6">
 								<label for="total_prob" class="col-sm-5 control-label" style="text-align:left;">한 페이지 당 문제 수</label>
 								<div class="col-sm-4">
-									<select class="form-control">
-										<option>2문제</option>
-										<option>4문제</option>
-										<option>6문제</option>
-										<option>8문제</option>
+									<select id="page_in_problems" class="form-control">
+										<option value = "2">2문제</option>
+										<option value = "4">4문제</option>
+										<option value = "6">6문제</option>
+										<option value = "8">8문제</option>
 									</select>
 								</div>
 							</div>
@@ -73,45 +73,36 @@
 									</tr>
 									<tr>
 										<td>
-											<select name="p_subject" id="p_subject" class="form-control getcha">
+											<select name="p_subject" id="p_subject" class="p_subject form-control getcha">
 											<c:forEach items="${subjectlist}" var="row" >
 				  			  					<option value="${row}"> ${row} </option>
 				  			 			 	</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="p_source" id="p_source" class="form-control getcha">
-											<c:forEach var="row" items="${sourcelist}">
+											<select name="p_source" id="p_source" class="p_source form-control getcha">
+											<c:forEach items="${sourcelist}" var="row">
 				  			  					<option value="${row}"> ${row} </option>
 				  			 			 	</c:forEach>
 											</select>
+										</td> 
+										<td>
+											<select name="p_unit" id="p_unit" class="p_unit form-control getcha">
+											 <c:forEach items="${unitlist}" var="row" >
+				  			  					<option value="${row}"> ${row} </option>
+				  			 			 	</c:forEach>
+				  			 			 	</select>
 										</td>
 										<td>
-											<select name="p_unit" id="p_unit" class="form-control getcha">
-											 <c:forEach var="row" items="${list}">
-				  			  					<option id="row_${row.p_unit}"> </option>
-				  			 			 	</c:forEach><!-- 
-												<option value="jisulog">지수와 로그함수</option>
-												<option value="odd">경우의수</option>
-												<option value="suyeolhap">수열의합</option> -->
-											</select>
-										</td>
-										<td>
-											<select name="p_difficulty" id="p_difficulty" class="form-control getcha">
-											<c:forEach var="row" items="${list}">
-				  			  					<option id="row_${row.p_difficulty}"> </option>
-				  			 			 	</c:forEach><!-- 
-												<option value="2points">2점</option>
-												<option value="3points">3점</option>
-												<option value="n21">21번</option>
-												<option value="sang">상</option>
-												<option value="ha">하</option> -->
+											<select name="p_difficulty" id="p_difficulty" class="p_difficulty form-control getcha">
+											<c:forEach items="${difficultylist}" var="row" >
+				  			  					<option value="${row}"> ${row}</option>
+				  			 			 	</c:forEach>
 											</select>
 										</td>
 										<td>
 											<input class="form-control EachPnum getcha" type="number" min="1" max="1024" >
 										</td>
-
 										<td id="button_row" style="border:none;">
 											<button id="row_add" type="button" class="btn btn-primary btn-sm" style="border-radius:50%;">
 											  <span class="glyphicon glyphicon-plus"></span>
@@ -132,27 +123,48 @@
 			<!-- col -->
 		</div>
 		<!-- row -->
-		학생 : ${selected_students}
+		학생 : ${selected_students} <br>
+		
+		</select>
+		
+		</div>
 	</section>
 	<div id="printProblems">
 	
 	</div>
 
-
 <script>
-	$( function() {
+	var sourcelist;
 
+	$( function() {
+		var id= 0;
 		$(document).on("click", "#row_add", function() {
+			 var table = document.getElementById("prob_cond");
+			    var row = table.insertRow(-1);
+			    var cell1 = row.insertCell(0);
+			    var cell2 = row.insertCell(1);
+			    var cell3 = row.insertCell(2);
+			    var cell4 = row.insertCell(3);
+			    var cell5 = row.insertCell(4);
+			    var cell6 = row.insertCell(5);
+			    cell1.innerHTML = "<select id="+id+"_subject"+" name='p_subject' class='p_subject form-control getcha'><c:forEach items='${subjectlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell2.innerHTML = "<select id="+id+"_source"+" name='p_source' class='p_source form-control getcha'><c:forEach items='${sourcelist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell3.innerHTML = "<select id="+id+"_unit"+" name='p_unit' class='p_unit form-control getcha'><c:forEach items='${unitlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell4.innerHTML = "<select id="+id+"_difficulty"+" name='p_difficulty' class='p_difficulty form-control getcha'><c:forEach items='${difficultylist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell5.innerHTML = "<input class='form-control EachPnum getcha' type='number' min='1' max='1024' >";
+			    id= id+1;
+			    /*
 			var $last_tr = $("table[id=prob_cond] tr").last();
 			var $cloneHtml= $($("table[id=prob_cond] tr:last").clone());
-
+ 
 			$cloneHtml.find("select").each(function(i) {
 				this.selectedIndex = $last_tr.find("select")[i].selectedIndex;
 			});
-
+			*/
 			$("table[id=prob_cond] tr").last().find("td").eq(5).html("<button id=\"row_minus\" type=\"button\" class=\"btn btn-primary btn-sm\" style=\"border-radius:50%;\"><span class=\"glyphicon glyphicon-minus\"></span></button>");
+			/*
 			$("table[id=prob_cond] tbody:last").append($cloneHtml);
-			changePnum();
+			changePnum(); */
 		});
 
 		$(document).on("click", "#row_minus", function() {
@@ -161,19 +173,18 @@
 			changePnum();
 		});
 
-
-
+		
 		$(document).on("click", "#testbtn", function() {
 			var ps="";
 			$(".getcha").each(function(){
 				ps+=$(this).val();
 				ps+="$";
 			})
-
+			var page_in_problems = $("#page_in_problems").val();
 			$.ajax({
 		  		async: false,
 		  		type : 'POST',
-		  		data : {"ps":ps},
+		  		data : {"ps":ps , "page_in_problems":page_in_problems},
 		  		url	 : "./downTest",
 		  		success : function(data) {
 		  			alert(data)
@@ -186,15 +197,15 @@
 		  	});
 		});
 
-		$(document).on("click",".EachPnum",function(){
+		/* $(document).on("click",".EachPnum",function(){
 			changePnum();
 		})
 
 
 		$(document).on("keyup",".EachPnum",function(){
 			changePnum();
-		})
-
+		}) */
+/* 
 		function changePnum(){
 			var totalnum=0;
 			$(".EachPnum").each(function(){
@@ -204,33 +215,79 @@
 			var ratio=1;
 			ratio=Number($(this).val())/Number(total)*100+"%";
 
-		}
+		} */
 
 	 });
 	
-	$(document).on("change", "#p_subject", function() {
-		var p = $(this).val()
-		
+	$(document).on("change", ".p_subject", function() {
+		var p = $(this).val();
+		var index = $(this).attr('id');
+		var index_char = index.split("_")[0];
+		var target_source = index_char + "_source";
+
 		$.ajax({
 	  		async: false,
 	  		type : 'POST',
 	  		data : {"p":p},
 	  		url	 : "./selectP",
 	  		success : function(data) {
+	  				$("#"+target_source).html(data);
+	  			},
+	  
+	  		error:function(request,status,error){
+	  	        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	  	       },
+	  	     complete : function(data) {
+	  	                 //  실패했어도 완료가 되었을 때 처리
+	  	        }
+			
+		});
+	});
+	
+	$(document).on("change", ".p_source", function() {
+		var pa = $(this).val();
+		var psource = $(this).val();
+		var index = $(this).attr('id');
+		var index_char = index.split("_")[0];
+		var target_unit = index_char + "_unit";
+		
+		$.ajax({
+	  		async: false,
+	  		type : 'POST',
+	  		data : {"pa":pa, "psource":psource},
+	  		url	 : "./selectPa",
+	  		success : function(data) {
 	  			alert(data);
-	  			var callback = function (data) {
+	  			$("#"+target_unit).html(data);
+	  		},
+	  		
+	  		error:function(request,status,error){
+	  	        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	  	       },
+	  	     complete : function(data) {
+	  	                 //  실패했어도 완료가 되었을 때 처리
+	  	        }
 
-	  			    // Get select
-	  			    var select = document.getElementById('sourcelist');
-
-	  			    // Add options
-	  			    for (var i in data) {
-	  			        $(select).append('<option value=' + data[i] + '>' + data[i] + '</option>');
-	  			    }
-
-	  			    // Set selected value
-	  			    $(select).val(data[1]);
-	  			}
+	  	});
+	});
+	
+	$(document).on("change", ".p_unit", function() {
+		var pa = $(this).val();
+		var psource = $(this).val();
+		var punit = $(this).val();
+		
+		var index = $(this).attr('id');
+		var index_char = index.split("_")[0];
+		var target_unit = index_char + "_unit";
+		
+		$.ajax({
+	  		async: false,
+	  		type : 'POST',
+	  		data : {"pap":pap, "psource":psource, "punit":punit},
+	  		url	 : "./selectPaP",
+	  		success : function(data) {
+	  			alert(data);
+	  			$("#"+target_unit).html(data);
 	  		},
 	  		
 	  		error:function(request,status,error){
@@ -243,6 +300,7 @@
 	  	});
 	});
 
+	
 </script>
 
 

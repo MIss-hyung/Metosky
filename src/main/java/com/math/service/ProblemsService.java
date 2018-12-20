@@ -15,4 +15,8 @@ public interface ProblemsService {
 	public List<Map<String,Object>> problemSelectList() throws Exception;
 	public List<String> getsubjectlist() throws Exception;
 	public List<String> getsourcelist(String p_subject) throws Exception;
+	public List<String> getunitlist(String p_subject , String p_source) throws Exception;
+	public List<String> getdifficultylist(String p_subject , String p_source, String p_unit) throws Exception;
+	public String getS3codes(String p_code) throws Exception;
+	
 }
