@@ -30,18 +30,12 @@
 		SELECT DISTINCT p_source FROM problems where p_subject = #{p_subject};
 	</select>
 	
-	<select id="unitlist" resultType="String" parameterType="String">
-		SELECT DISTINCT p_unit FROM problems where p_source in (SELECT DISTINCT p_source 
-		From p_source = #{p_source}
-		WHere p_subject = #{p_subject});
+	<select id="unitList" resultType="String" parameterType="ProblemsVO">
+ 		SELECT DISTINCT(p_unit) from problems where p_source = #{p_source} and p_subject=#{p_subject}
 	</select>
 	
-	<select id="difficultylist" resultType="String" parameterType="String">
-		SELECT DISTINCT p_difficulty FROM problems where p_unit in 
-		(SELECT DISTINCT p_unit 
-		From p_unit = #{p_unit}
-		WHere p_source = #{p_source}
-		and p_subject = p_subject);
+	<select id="difficultyList" resultType="String" parameterType="ProblemsVO">
+		select distinct(p_difficulty) from problems where p_source = #{p_source} and p_subject=#{p_subject} and p_unit=#{p_unit}
 	</select>
 	
 	<select id="s3CodeList" resultType="String" parameterType="String">

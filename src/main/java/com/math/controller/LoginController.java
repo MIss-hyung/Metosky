@@ -1,5 +1,7 @@
 package com.math.controller;
 
+import java.io.PrintWriter;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,11 +29,10 @@ public class LoginController {
    }
    
    @RequestMapping(value="/login", method=RequestMethod.POST)
-   public String loginPost(TeachersVO teacher, HttpSession session) throws Exception{
-      System.out.println("/login POST 諛⑹떇 �엯�땲�떎.");
+   public String loginPost(TeachersVO teacher, HttpSession session, HttpServletResponse response) throws Exception{
+
       ModelAndView mav = new ModelAndView();
       String returnURL = "";
-      //String msg= "濡쒓렇�씤�뿉 �떎�뙣�뻽�뒿�땲�떎.";
       
       if(session.getAttribute("login") != null) {
          session.removeAttribute("login");
@@ -42,17 +43,17 @@ public class LoginController {
       if(vo != null) {
          session.setAttribute("login",vo);
 
-         if(vo.getIs_admin() == 1) {// admin�씠硫� 
+         if(vo.getIs_admin() == 1) {
             returnURL = "redirect:/admin/9010";
          }else {
+        	 
             returnURL = "redirect:/teacher/2010";
          }
       }else {
-      //mav.addObject("msg","failure");
-         returnURL = "redirect:/";
-         //mav.setViewName("redirect:/");
-         mav.addObject("msg","failure");
-         
+    	  response.setContentType("text/html; charset=UTF-8");
+    	  PrintWriter out = response.getWriter();
+    	  out.println("<script>alert('로그인 실패'); history.go(-1);</script>");
+    	  out.flush();
       }
       
       return returnURL;

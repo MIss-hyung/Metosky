@@ -69,11 +69,11 @@
 										<th style="text-align:center; width:90px;">문제 수</th>
 										<th style="text-align:center;"> </th>
 										<th style="text-align:center; background-color:white; border:none;">&nbsp;</th>
-										<th style="text-align:center;">비율</th>
 									</tr>
 									<tr>
 										<td>
 											<select name="p_subject" id="p_subject" class="p_subject form-control getcha">
+											<option value=''>--select--</option>
 											<c:forEach items="${subjectlist}" var="row" >
 				  			  					<option value="${row}"> ${row} </option>
 				  			 			 	</c:forEach>
@@ -81,6 +81,7 @@
 										</td>
 										<td>
 											<select name="p_source" id="p_source" class="p_source form-control getcha">
+											<option value=''>--select--</option>
 											<c:forEach items="${sourcelist}" var="row">
 				  			  					<option value="${row}"> ${row} </option>
 				  			 			 	</c:forEach>
@@ -88,6 +89,7 @@
 										</td> 
 										<td>
 											<select name="p_unit" id="p_unit" class="p_unit form-control getcha">
+											<option value=''>--select--</option>
 											 <c:forEach items="${unitlist}" var="row" >
 				  			  					<option value="${row}"> ${row} </option>
 				  			 			 	</c:forEach>
@@ -95,6 +97,7 @@
 										</td>
 										<td>
 											<select name="p_difficulty" id="p_difficulty" class="p_difficulty form-control getcha">
+											<option value=''>--select--</option>
 											<c:forEach items="${difficultylist}" var="row" >
 				  			  					<option value="${row}"> ${row}</option>
 				  			 			 	</c:forEach>
@@ -112,7 +115,7 @@
 								</table>
 							</div>
 
-							 <butten type="button" id="testbtn" class="btn btn-block btn-primary btn-lg" style="width:130px; float:right; margin-right: 18px">출력하기</button>
+							 <butten type="button" id="print_button" class="btn btn-block btn-primary btn-lg" style="width:130px; float:right; margin-right: 18px">출력하기</button>
 
 						</div>
 						<!-- box-body -->
@@ -147,24 +150,15 @@
 			    var cell4 = row.insertCell(3);
 			    var cell5 = row.insertCell(4);
 			    var cell6 = row.insertCell(5);
-			    cell1.innerHTML = "<select id="+id+"_subject"+" name='p_subject' class='p_subject form-control getcha'><c:forEach items='${subjectlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
-			    cell2.innerHTML = "<select id="+id+"_source"+" name='p_source' class='p_source form-control getcha'><c:forEach items='${sourcelist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
-			    cell3.innerHTML = "<select id="+id+"_unit"+" name='p_unit' class='p_unit form-control getcha'><c:forEach items='${unitlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
-			    cell4.innerHTML = "<select id="+id+"_difficulty"+" name='p_difficulty' class='p_difficulty form-control getcha'><c:forEach items='${difficultylist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
-			    cell5.innerHTML = "<input class='form-control EachPnum getcha' type='number' min='1' max='1024' >";
+			    cell1.innerHTML = "<select id="+id+"_subject"+" name='p_subject' class='p_subject form-control getcha'><option value=''>--select--</option><c:forEach items='${subjectlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell2.innerHTML = "<select id="+id+"_source"+" name='p_source' class='p_source form-control getcha'><option value=''>--select--</option><c:forEach items='${sourcelist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell3.innerHTML = "<select id="+id+"_unit"+" name='p_unit' class='p_unit form-control getcha'><option value=''>--select--</option><c:forEach items='${unitlist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell4.innerHTML = "<select id="+id+"_difficulty"+" name='p_difficulty' class='p_difficulty form-control getcha'><option value=''>--select--</option><c:forEach items='${difficultylist}' var='row' ><option value='${row}'> ${row} </option></c:forEach></select>";
+			    cell5.innerHTML = "<input class='form-control EachPnum getcha' type='number' min='1' max='1024' default='1'>";
 			    id= id+1;
-			    /*
-			var $last_tr = $("table[id=prob_cond] tr").last();
-			var $cloneHtml= $($("table[id=prob_cond] tr:last").clone());
- 
-			$cloneHtml.find("select").each(function(i) {
-				this.selectedIndex = $last_tr.find("select")[i].selectedIndex;
-			});
-			*/
+			    
 			$("table[id=prob_cond] tr").last().find("td").eq(5).html("<button id=\"row_minus\" type=\"button\" class=\"btn btn-primary btn-sm\" style=\"border-radius:50%;\"><span class=\"glyphicon glyphicon-minus\"></span></button>");
-			/*
-			$("table[id=prob_cond] tbody:last").append($cloneHtml);
-			changePnum(); */
+		
 		});
 
 		$(document).on("click", "#row_minus", function() {
@@ -172,50 +166,40 @@
 			$row.remove();
 			changePnum();
 		});
-
 		
-		$(document).on("click", "#testbtn", function() {
+		$(document).on("click", "#print_button", function() {
+			var ps="";
+			$(".getcha").each(function(){
+				ps+=$(this).val();
+				ps+="$";
+			}) 
+			var printBy = $("#page_in_problems").val();
+			location.href="./fileDown?ps="+ps+"&printBy="+printBy;
+		})
+
+		/* 
+		$(document).on("click", "#print_button", function() {
 			var ps="";
 			$(".getcha").each(function(){
 				ps+=$(this).val();
 				ps+="$";
 			})
-			var page_in_problems = $("#page_in_problems").val();
+			
 			$.ajax({
 		  		async: false,
 		  		type : 'POST',
-		  		data : {"ps":ps , "page_in_problems":page_in_problems},
+		  		data : {"ps":ps , "printBy":printBy},
 		  		url	 : "./downTest",
 		  		success : function(data) {
-		  			alert(data)
-		  			$("#printProblems").append(data);
+						
 		  		},
 		  		error : function(error) {
 		  			alert("error: " + ps);
 		  			return false;
 		  		}
 		  	});
-		});
+		}); */
 
-		/* $(document).on("click",".EachPnum",function(){
-			changePnum();
-		})
-
-
-		$(document).on("keyup",".EachPnum",function(){
-			changePnum();
-		}) */
-/* 
-		function changePnum(){
-			var totalnum=0;
-			$(".EachPnum").each(function(){
-				totalnum+=Number($(this).val());
-			})
-			$("#total_prob").val(totalnum);
-			var ratio=1;
-			ratio=Number($(this).val())/Number(total)*100+"%";
-
-		} */
 
 	 });
 	
@@ -245,19 +229,19 @@
 	});
 	
 	$(document).on("change", ".p_source", function() {
-		var pa = $(this).val();
 		var psource = $(this).val();
 		var index = $(this).attr('id');
 		var index_char = index.split("_")[0];
 		var target_unit = index_char + "_unit";
 		
+		var target_subject= index_char + "_subject";
+		var pa = $("#"+target_subject).val();
 		$.ajax({
 	  		async: false,
 	  		type : 'POST',
 	  		data : {"pa":pa, "psource":psource},
 	  		url	 : "./selectPa",
 	  		success : function(data) {
-	  			alert(data);
 	  			$("#"+target_unit).html(data);
 	  		},
 	  		
@@ -272,22 +256,26 @@
 	});
 	
 	$(document).on("change", ".p_unit", function() {
-		var pa = $(this).val();
-		var psource = $(this).val();
 		var punit = $(this).val();
 		
 		var index = $(this).attr('id');
 		var index_char = index.split("_")[0];
-		var target_unit = index_char + "_unit";
+		var target_dificulty = index_char + "_difficulty";
+		
+		var target_subject= index_char + "_subject";
+		var pa = $("#"+target_subject).val();
+		
+		var target_source = index_char + "_source";
+		var psource = $("#"+target_source).val();
+		
 		
 		$.ajax({
 	  		async: false,
 	  		type : 'POST',
-	  		data : {"pap":pap, "psource":psource, "punit":punit},
+	  		data : {"pa":pa, "psource":psource, "punit":punit},
 	  		url	 : "./selectPaP",
 	  		success : function(data) {
-	  			alert(data);
-	  			$("#"+target_unit).html(data);
+	  			$("#"+target_dificulty).html(data);
 	  		},
 	  		
 	  		error:function(request,status,error){

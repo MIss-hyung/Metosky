@@ -13,7 +13,7 @@ public class MainController {
 	
 	@RequestMapping(value="/2010", method=RequestMethod.GET)
 	public String showDashboard( Model model, HttpSession session) throws Exception{
-		System.out.println("/students/studentsList GET 방식입니다.");
+
 		return "students/studentsList";
 	}
 }

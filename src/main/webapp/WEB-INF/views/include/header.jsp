@@ -76,11 +76,12 @@
         <ul class="nav navbar-nav">
          
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+          <li class="dropdown user user-menu" style="display:flex;">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
              <!--<img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="user-image" alt="User Image">  --> 
-              <span class="">${sessionScope.login.t_name} 선생님</span>
+              <span class="">${sessionScope.login.t_name} 선생님 </span>
             </a>
+            <a href="./logout" >로그아웃</a>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
@@ -101,7 +102,7 @@
           <!-- <img src="${pageContext.request.contextPath}/resources/theme/favicon_white.ico" class="img-circle" alt="User Image"> -->
         </div>
         <div class="pull-left info" style="margin-bottom:5px;">
-          <p>${sessionScope.login.t_name} 선생님</p>
+          <p>${sessionScope.login.t_name} 선생님 </p>
         </div>
       </div>
       <!-- search form -->

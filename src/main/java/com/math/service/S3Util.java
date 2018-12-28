@@ -39,7 +39,6 @@ public class S3Util
   private AmazonS3 s3Client;
 
 	public S3Util() {
-		System.out.println("here1");
 		AWSCredentials credentials = new BasicAWSCredentials(accesskey, secreteKey);
 		ClientConfiguration clientConfig = new ClientConfiguration();
 		clientConfig.setProtocol(Protocol.HTTP);

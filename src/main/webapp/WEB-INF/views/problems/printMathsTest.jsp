@@ -70,7 +70,7 @@
          </div>
          <form action = "./3030" accept-charset="utf-8"  name = "person_info" method = "post">
             <input type="hidden" id="selected_students_h" name="selected_students" value="" >
-            <input type="submit" id="go3030" class="btn btn-block btn-primary btn-lg" style="width:130px; float:right; margin-right: 18px">문제 설정</input>
+            <input type="submit" id="go3030" class="btn btn-block btn-primary btn-lg" style="width:130px; float:right; margin-right: 18px"></input>
          </form>
       </div>
    </section>
@@ -90,7 +90,13 @@
            students+=$(this).val();
            students+=" ,";
         });
+        
+        if(students==""){
+        	alert("아무도 선택되지 않았습니다");
+        	return false;
+        }
         $("#selected_students_h").val(students);
+        	
         
     })
     

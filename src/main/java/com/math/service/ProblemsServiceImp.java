@@ -47,13 +47,13 @@ public class ProblemsServiceImp implements ProblemsService {
 		return dao.getsourcelist(p_subject);
 	}
 	@Override
-	public List<String> getunitlist(String p_subject, String p_source) throws Exception {
+	public List<String> getunitlist(ProblemsVO pv) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getunitlist(p_subject ,p_source);
+		return dao.getunitlist(pv);
 	}
 	@Override
-	public List<String> getdifficultylist(String p_subject , String p_source, String p_unit) throws Exception {
-		return dao.getdifficultylist(p_subject,p_source,p_unit);
+	public List<String> getdifficultylist(ProblemsVO pv) throws Exception {
+		return dao.getdifficultylist(pv);
 	}
 	@Override
 	public String getS3codes(String p_code) throws Exception {

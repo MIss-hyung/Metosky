@@ -69,7 +69,7 @@
   		async: false,
   		type : 'POST',
   		data : JSON.stringify(request),
-  		url	 : "emailcheck",
+  		url	 : "./emailcheck",
   		dataType: "json",
   		contentType: "application/json; charset=UTF-8",
   		success : function(data) {
@@ -115,9 +115,8 @@
   	}
 
     if(emailck == 1 && field_chk == 1 && pswd_field == 1) {
-      	var res = alert("회원가입이 완료되었습니다.");
-		document.location.href="/index"
-		return true;
+      	var res = alert("회원가입이 완료되었습니다!");
+		history.go(-1);
     }else{
     	return false;
     }
@@ -158,7 +157,6 @@
       </div>
     </form>
 
-    <a href="/metosky/" class="text-center">이미 가입 하였습니다.</a>
   </div>
   <!-- /.form-box -->
 </div>

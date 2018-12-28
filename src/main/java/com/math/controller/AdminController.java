@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -76,12 +78,25 @@ public class AdminController {
 		}
 		teacher.setT_id(t_id);
 		teacher.setT_status(t_status);
-		
-//		System.out.println("t_id : " + t_id + ",t_status : " + t_status);
+	
 		service.approveTeacher(teacher);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("status", true);
 		return map;
 	}
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	   public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+	      Object obj = session.getAttribute("login");
+	      
+	      if(obj != null) {
+	         TeachersVO vo = (TeachersVO) obj;
+	         session.removeAttribute("login");
+	         session.invalidate();
+	         //req.getparameter
+	      }
+	      
+	      return "redirect:/";
+	   }
+	   
 	
 }

@@ -69,7 +69,6 @@ public class TeachersController {
 		teacher.setCreated(ct);
 		teacher.setIs_admin(0);
 		
-		System.out.println(teacher.toString());
 		service.insertTeacher(teacher);
 	}
 	

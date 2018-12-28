@@ -31,15 +31,12 @@ public class StudentListController {
 	
 	@RequestMapping(value="/2010", method=RequestMethod.GET)
 	public ModelAndView list(HttpSession session) throws Exception {
-		//System.out.println("/admin/9010 called");
-		//System.out.println(vo.getIs_admin());
+		System.out.println("test");
 		Object obj = session.getAttribute("login");
 		TeachersVO vo = (TeachersVO) obj;
-		/*
-		if(vo != null) {
-			session.setAttribute("login",vo);
-		*/
+		System.out.println("get into /teacher/2010");
 			if(vo.getIs_admin() == 1) {// 어드민이면 
+				System.out.println("into studentlist - may admin");
 				List<Map<String, Object>> list = service.AdminstudentsList();
 
 				ModelAndView mav = new ModelAndView();
@@ -48,6 +45,7 @@ public class StudentListController {
 				return mav;
 				
 			}else { //아닌경우
+				System.out.println("into studentlist - not admin");
 				List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
 
 				ModelAndView mav = new ModelAndView();
@@ -57,13 +55,6 @@ public class StudentListController {
 			}
 		}
 }
-//	@RequestMapping(value = "/test_check",method = RequestMethod.POST)
-//	@ResponseBody
-//	public Class<valueArrTest[]> testCheck(@RequestParam(value = "valueArrTest[]")List <String> valueArr) {
-//		return valueArrTest[]
-//		}
-//	}
-
 
 
 	

@@ -54,27 +54,21 @@ public class ProblemsDAOImp implements ProblemsDAO{
 	}
 	
 	@Override
-	public List<String> getunitlist(String p_subject ,String p_source) throws Exception {
+	public List<String> getunitlist(ProblemsVO pv) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, String> sqlmap = new HashMap<>();
-		sqlmap.put(p_subject, p_subject);
-		sqlmap.put(p_source, p_subject);
-		return sqlSession.selectList(namespace+ ".unitList", sqlmap);
+		return sqlSession.selectList(namespace+ ".unitList", pv);
 	}
 
 	@Override
-	public List<String> getdifficultylist(String p_subject , String p_source, String p_unit) throws Exception {
+	public List<String> getdifficultylist(ProblemsVO pv) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String, String> sqlmap = new HashMap<>();
-		sqlmap.put(p_subject, p_subject);
-		sqlmap.put(p_source, p_subject);
-		sqlmap.put(p_unit, p_unit);
-		return sqlSession.selectList(namespace+ ".difficultyList", sqlmap);
+		return sqlSession.selectList(namespace+ ".difficultyList", pv);
 	}
 
 	@Override
 	public String getS3codes(String p_code) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace + ".s3codeList",p_code);
+		return sqlSession.selectOne(namespace + ".s3CodeList",p_code);
 	}
 }
