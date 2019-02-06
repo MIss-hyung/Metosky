@@ -1,5 +1,10 @@
 package com.math.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +22,15 @@ import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Drawing;
 import org.apache.poi.ss.usermodel.Picture;
+import org.apache.poi.util.Units;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.Document;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,25 +80,22 @@ public class PrintTestcontroller {
       
       Object obj = session.getAttribute("login");
       TeachersVO vo = (TeachersVO) obj;
+      ModelAndView mav = new ModelAndView();
+      mav.setViewName("/problems/printMathsTest");
       
-      if(vo.getIs_admin() == 1) {
-         List<Map<String, Object>> list = service.AdminstudentsList();
-
-         ModelAndView mav = new ModelAndView();
-         mav.setViewName("/problems/printMathsTest");
-         mav.addObject("list", list);
-         
-         return mav;
-         
-      }else { 
-         List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
-
-         ModelAndView mav = new ModelAndView();
-         mav.setViewName("/problems/printMathsTest");
-         mav.addObject("list", list);
-         return mav;
+      try {
+	      if(vo.getIs_admin() == 1) {
+	         List<Map<String, Object>> list = service.AdminstudentsList();
+	         mav.addObject("list", list);
+	         return mav;
+	      }else { 
+	         List<Map<String, Object>> list = service.StudentsList(vo.getT_id());
+	         mav.addObject("list", list);
+	         return mav;
+	      }
+      }catch(Exception e) {
+    	  return mav;
       }
-      
    }
    
    @RequestMapping(value="/3020", method=RequestMethod.GET)
@@ -102,11 +111,10 @@ public class PrintTestcontroller {
 
       ModelAndView mav= new ModelAndView();
      
-      if(selected_students !=null) {
+      if(selected_students !="") {
     	  selected_students=selected_students.substring(0, selected_students.length()-1);
-      }
-      
-      mav.addObject("selected_students", selected_students);
+    	  mav.addObject("selected_students", selected_students);
+    	  }
       mav.addObject("list", list);
       mav.addObject("subjectlist", subjectlist);
       mav.setViewName("/problems/problemSettings");
@@ -171,7 +179,7 @@ public class PrintTestcontroller {
 	   
 	   return mv;
    }
-
+   
    @ResponseBody
    @RequestMapping(value="/fileDown",produces="application/json; charset=utf8", method = {RequestMethod.GET, RequestMethod.POST})
    public void FileEx(Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -184,8 +192,8 @@ public class PrintTestcontroller {
      Date date= new Date();
      SimpleDateFormat sdf =new SimpleDateFormat("yyyy_MM_dd_hh_mm");
      SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd");
-     String today = sdf2.format(date).toString();
-    		 
+     String fileName = sdf2.format(date).toString()+".docx";
+     
      List<ProblemsVO> pvolist=new ArrayList<ProblemsVO>();
      ProblemsVO eachp = null; //媛앹껜�쓽 �씠由꾩쓣 �떞�뒗�떎.
      
@@ -216,85 +224,36 @@ public class PrintTestcontroller {
         print_p_code +=p_code +", ";
      }
      
+     ClassPathResource resource = new ClassPathResource("file/doctest.docx");
+	   File file = resource.getFile();
+	   FileInputStream fis = new FileInputStream(file);
+      XWPFDocument document = new XWPFDocument(fis);
+      
+     XWPFParagraph paragh = document.getParagraphs().get(0);
+     XWPFRun run = paragh.createRun();
      
-     List<byte[]> ImgByteList = new ArrayList<>();
+     run.setText(print_p_code);
+     run.addBreak();
      
-     //파일 byte 정보 불러와서 저장
+     int width = 260;
      for(int i=0; i<s3_codes.size(); i++) {
         byte[] demBytes = s3Util.getFileInfo(bucketName, directoryName+s3_codes.get(i)+".jpg");
-        ImgByteList.add(demBytes);
+        ByteArrayInputStream img = new ByteArrayInputStream(demBytes);
+        BufferedImage bi= ImageIO.read(new ByteArrayInputStream(demBytes));
+        double height = (double)bi.getHeight()/bi.getWidth()*width;
+	    run.addPicture(img, Document.PICTURE_TYPE_JPEG, s3_codes.get(i), Units.toEMU(width), Units.toEMU(height));
+	    run.addBreak();
+	    run.addBreak();
+	    run.addBreak();
+	    run.addBreak();
+	    run.addBreak();
      }
      
-     XSSFWorkbook wb = new XSSFWorkbook();
-     int page_index =0 ;
-     
-     int col1=3, row1=10, col2=13, row2=10;
-     if(index==2) {
-        row2 = 8;
-     }
-     XSSFSheet sheet = wb.createSheet(page_index+1+"_page");
-     
-     XSSFCell cell = sheet.createRow(1).createCell(4);
-     cell.setCellValue("날짜 : " + today + "문제 코드 : " + print_p_code);
- 
-     
-     List<int[]> indexlist = new ArrayList<>();
-     
-	for(int i=0; i<ImgByteList.size(); i++) {
-			boolean newsheet = false;
-			int[] index_of_img =new int[4];
-			
-	        if( i!=0 && i % index==0) {
-	           page_index+=1;
-	           sheet = wb.createSheet(page_index+1+"_page");
-	           col1=3;
-	           row1=10;
-	           newsheet = true;
-	        }
-	        int picture = wb.addPicture(ImgByteList.get(i), XSSFWorkbook.PICTURE_TYPE_JPEG);
 
-	         CreationHelper helper = wb.getCreationHelper();
-	         Drawing drawing = sheet.createDrawingPatriarch();
-	         ClientAnchor anchor = helper.createClientAnchor();
-	         
-	         anchor.setCol1(col1); 
-	         anchor.setRow1(row1);
-	         anchor.setCol2(col2); 
-	         anchor.setRow2(row2);
-	         
-	
-	         Picture pict = drawing.createPicture(anchor, picture);
-	         pict.resize();
-	         
-	         index_of_img[0]=pict.getPreferredSize().getRow1();
-	         index_of_img[1]=pict.getPreferredSize().getCol1();
-	         index_of_img[2]=pict.getPreferredSize().getRow2();
-	         index_of_img[3]=pict.getPreferredSize().getCol2();
-	         indexlist.add(index_of_img);
-	         
-	         if(index==2) {
-		            row1 = pict.getPreferredSize().getRow2()+5;
-		         }else {
-		           if(i%2==0) {
-		              col1=pict.getPreferredSize().getCol2()+2;
-		              if(i-1 <0 || newsheet) {
-		            	  row1 =pict.getPreferredSize().getRow1();
-		              }else {
-		            	  row1 = indexlist.get(i-1)[2]+3;
-		              }
-		            }else {
-		              col1= 3;
-		              row1 = indexlist.get(i-1)[2]+3;
-		            }
-		         }
-
-	      }
-	      
-		  String fileName= sdf.format(date).toString()+".xlsx";
-	      response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName);
-	      OutputStream fileOut = response.getOutputStream();
-	      wb.write(fileOut);
-	      fileOut.close();
-	      
+     response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName);
+	    OutputStream fileOut = response.getOutputStream();
+	    document.write(fileOut);
+	     fileOut.close();
    }
+
 }

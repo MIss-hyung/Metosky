@@ -93,7 +93,7 @@
         
         if(students==""){
         	alert("아무도 선택되지 않았습니다");
-        	return false;
+        	
         }
         $("#selected_students_h").val(students);
         	
